@@ -1,0 +1,69 @@
+/* Smooth flowing gradient animations using background-position */
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-1 {
+    background: linear-gradient(270deg, #f43f5e, #ec4899, #9333ea, #ec4899, #f43f5e);
+    background-size: 400% 400%;
+    animation: gradient-flow 15s ease infinite;
+}
+
+.animate-gradient-2 {
+    background: linear-gradient(270deg, #facc15, #f59e0b, #ea580c, #f59e0b, #facc15);
+    background-size: 400% 400%;
+    animation: gradient-flow 12s ease infinite;
+}
+
+.animate-gradient-3 {
+    background: linear-gradient(270deg, #3b82f6, #06b6d4, #0d9488, #06b6d4, #3b82f6);
+    background-size: 400% 400%;
+    animation: gradient-flow 14s ease infinite;
+}
+
+.animate-gradient-4 {
+    background: linear-gradient(270deg, #a855f7, #8b5cf6, #4f46e5, #8b5cf6, #a855f7);
+    background-size: 400% 400%;
+    animation: gradient-flow 16s ease infinite;
+}
+
+.animate-gradient-5 {
+    background: linear-gradient(270deg, #ec4899, #f43f5e, #dc2626, #f43f5e, #ec4899);
+    background-size: 400% 400%;
+    animation: gradient-flow 11s ease infinite;
+}
+
+.animate-gradient-6 {
+    background: linear-gradient(270deg, #64748b, #4b5563, #3f3f46, #4b5563, #64748b);
+    background-size: 400% 400%;
+    animation: gradient-flow 18s ease infinite;
+}
+
+.animate-gradient-7 {
+    background: linear-gradient(270deg, #f59e0b, #f97316, #dc2626, #f97316, #f59e0b);
+    background-size: 400% 400%;
+    animation: gradient-flow 13s ease infinite;
+}
+
+.animate-gradient-8 {
+    background: linear-gradient(270deg, #10b981, #16a34a, #0f766e, #16a34a, #10b981);
+    background-size: 400% 400%;
+    animation: gradient-flow 15s ease infinite;
+}
+
+.animate-gradient-9 {
+    background: linear-gradient(270deg, #06b6d4, #0284c7, #1d4ed8, #0284c7, #06b6d4);
+    background-size: 400% 400%;
+    animation: gradient-flow 14s ease infinite;
+}

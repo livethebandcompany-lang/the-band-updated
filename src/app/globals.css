@@ -1,0 +1,128 @@
+@import "lenis/dist/lenis.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-oswald);
+  --font-serif: var(--font-serif);
+}
+
+:root {
+  font-family: var(--font-inter);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #E11D48;
+  /* Rose 600 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-oswald);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overscroll-behavior: none;          /* prevent rubber-band bounce from interfering with Lenis */
+  -webkit-overflow-scrolling: touch;  /* smooth momentum on iOS */
+}
+
+/* Light mode specific styles */
+:root {
+  --background: #ffffff;
+  --foreground: #18181b;
+  --background-secondary: #f4f4f5;
+  --border-color: #e4e4e7;
+}
+
+/* Dark mode specific styles */
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --background-secondary: #18181b;
+  --border-color: #27272a;
+}
+
+html {
+  /* scroll-behavior is managed by Lenis – do NOT set smooth here */
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom thin scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 #18181b;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Apply Oswald font to all headings and bold display text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-bold,
+.font-display {
+  font-family: var(--font-oswald), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Extra bold for large headings */
+h1,
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* Serif elements keep Playfair Display */
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+/* Body text uses Inter */
+body,
+p,
+span,
+a,
+button {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}

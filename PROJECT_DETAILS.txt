@@ -1,0 +1,73 @@
+# Project: TBC-web (The Band Company)
+## Project Structure and Details
+
+This project is a Next.js 16 application built with TypeScript, Tailwind CSS, and MongoDB. It serves as a Booking CRM and Artist Management platform.
+
+---
+
+### Root Directory Files
+- `.env`: Environment variables for database, authentication, and external services (Nodemailer, Razorpay, Twilio).
+- `package.json`: Project dependencies, version, and scripts (`dev`, `build`, `start`).
+- `next.config.ts`: Next.js configuration settings.
+- `tailwind.config.ts`: Tailwind CSS configuration (v4 integrated).
+- `tsconfig.json`: TypeScript configuration.
+- `README.md`: Basic project information and setup.
+- `DEPLOYMENT.md`: Instructions for deploying the application.
+- `scripts/`: Custom maintenance or setup scripts.
+- `public/`: Static assets such as images and fonts.
+
+---
+
+### Core Folders (Inside `src/`)
+
+#### 1. `app/` (Next.js App Router)
+- `(root)/page.tsx`: The main landing page.
+- `layout.tsx`: Root layout with SEO metadata and global providers.
+- `admin/`: Admin dashboard components and pages for managing bookings, users, and analytics.
+- `api/`: Backend API routes for:
+  - `analytics/`: Tracking and reporting.
+  - `auth/`: Authentication logic (NextAuth).
+  - `bookings/`: CRUD operations for bookings.
+  - `otp/`: One-time password generation and verification.
+  - `invite/`: Management of invite codes for team members.
+  - `users/`: User profile and role management.
+  - `webhooks/`: External service integration hooks (e.g., Razorpay).
+- `auth/`: Login and registration pages.
+- `blog/`: Blog listing and individual post pages.
+- `services/`: Details about the various band and event services provided.
+
+#### 2. `components/` (Reusable UI Components)
+- `ui/`: Generic, small-scale UI primitives (Buttons, Inputs, Modals).
+- `admin/`: Components specific to the administrative dashboard (Sidebar, Data Tables, Charts).
+- `BandBuilder.tsx`: A complex interactive component for assembling custom band lineups.
+- `BookingModal.tsx`: The primary interface for users to submit booking inquiries.
+- `Hero.tsx`, `Navbar.tsx`, `Footer.tsx`: Core layout and landing page sections.
+- `CinematicVideoSlider.tsx`: High-end visual showcase for artist content.
+
+#### 3. `lib/` (Utility and Logic)
+- `db.ts`: MongoDB connection management using Mongoose.
+- `auth.ts`: Configuration for NextAuth providers and session handling.
+- `mailer.ts`: Utility for sending transactional emails (invoices, OTPs).
+- `utils.ts`: Small helper functions for CSS classes and data formatting.
+- `email-templates.ts`: HTML/React templates for automated emails.
+
+#### 4. `models/` (Database Schemas)
+- `User.ts`: Schema for staff, artists, and admin users.
+- `Booking.ts`: Complex schema capturing events, client details, and financial data.
+- `InviteCode.ts`: Schema for one-time tokens used in staff registration.
+
+#### 5. `data/`
+- `blogData.ts`: Static content for the blog section.
+
+#### 6. `types/`
+- TypeScript interfaces and types used across the application to ensure type safety.
+
+---
+
+### Key Technologies
+- **Frontend**: React 19, Next.js 16, Framer Motion (animations), Lucide (icons).
+- **Styling**: Tailwind CSS v4.
+- **Backend**: Next.js API Routes, NextAuth.js.
+- **Database**: MongoDB (via Mongoose).
+- **Payments**: Razorpay Integration.
+- **Communications**: Twilio (SMS/WhatsApp) and Nodemailer.
