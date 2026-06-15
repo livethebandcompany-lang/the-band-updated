@@ -79,7 +79,7 @@ export default function LaunchBanner() {
             </AnimatePresence>
 
             {/* Central Text Overlay */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-4">
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-12 md:px-4">
                 <AnimatePresence mode="wait">
                     <motion.h3
                         key={`text-${currentIndex}`}
@@ -87,7 +87,7 @@ export default function LaunchBanner() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.5 }}
-                        className="text-white text-3xl md:text-5xl font-bold uppercase tracking-wider mb-4 drop-shadow-md font-serif"
+                        className="text-white text-2xl md:text-5xl font-bold uppercase tracking-wider mb-4 drop-shadow-md font-serif"
                     >
                         {slides[currentIndex].title}
                     </motion.h3>
@@ -98,7 +98,7 @@ export default function LaunchBanner() {
                     transition={{ delay: 0.3, duration: 0.4 }}
                     className="h-1 bg-yellow-500 mb-4"
                 />
-                <p className="text-gray-200 text-sm md:text-lg tracking-[0.3em] uppercase">
+                <p className="text-gray-200 text-xs md:text-lg tracking-[0.3em] uppercase">
                     Live Music
                 </p>
             </div>
@@ -109,22 +109,22 @@ export default function LaunchBanner() {
                     e.stopPropagation();
                     prevSlide();
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
                 aria-label="Previous Slide"
                 type="button"
             >
-                <ChevronLeft className="w-8 h-8 font-bold" />
+                <ChevronLeft className="w-5 h-5 md:w-8 md:h-8 font-bold" />
             </button>
             <button
                 onClick={(e) => {
                     e.stopPropagation();
                     nextSlide();
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
                 aria-label="Next Slide"
                 type="button"
             >
-                <ChevronRight className="w-8 h-8 font-bold" />
+                <ChevronRight className="w-5 h-5 md:w-8 md:h-8 font-bold" />
             </button>
 
         </section>
