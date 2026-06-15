@@ -119,12 +119,12 @@ export default async function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-white dark:bg-zinc-950 px-4">
         <div className="container mx-auto max-w-5xl">
-            <div className="p-10 md:p-16 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-2xl text-center text-white">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif mb-4">
+            <div className="py-8 px-6 md:py-10 md:px-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-2xl text-center text-white">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif mb-3">
                     Planning a Celebration?
-                    <span className="block">Bring It To Life With The Band Company</span>
                 </h2>
-                <p className="text-base md:text-lg mb-8 max-w-3xl mx-auto opacity-95 leading-relaxed">
+                <p className="text-base md:text-lg mb-6 max-w-3xl mx-auto opacity-95 leading-relaxed">
+                    <span className="block font-semibold mb-2">Bring It To Life With The Band Company</span>
                     From intimate gatherings to grand celebrations, we create live music experiences that get everyone singing, smiling, and making memories.
                     <span className="block mt-2 font-medium">Let's make your event unforgettable.</span>
                 </p>
