@@ -471,8 +471,8 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                 {/* Bottom nav */}
                 <div className="shrink-0 px-6 py-4 border-t border-[#1a1408] bg-[#0a0703]/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none flex items-center justify-between gap-4 relative z-20">
                     <button onClick={prev} disabled={step===1}
-                        className="flex items-center gap-2 text-sm text-white font-bold hover:text-[#C9A84C] active:scale-95 disabled:active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
-                        <ChevronLeft className="w-4 h-4 text-white" /> Back
+                        className="flex items-center gap-2 text-base md:text-lg text-white font-bold hover:text-[#C9A84C] active:scale-95 disabled:active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                        <ChevronLeft className="w-5 h-5 text-white" /> Back
                     </button>
 
                     {/* Live mini-summary chips */}
@@ -485,8 +485,8 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
 
                     {step < 6 ? (
                         <button onClick={next}
-                            className="flex items-center gap-2 px-6 py-2.5 bg-[#C9A84C] hover:bg-[#b8963e] active:scale-95 text-black text-sm font-bold rounded-full transition-all shadow-lg shadow-[#C9A84C]/20">
-                            Next <ChevronRight className="w-4 h-4" />
+                            className="flex items-center gap-2 px-8 py-3.5 bg-[#C9A84C] hover:bg-[#b8963e] active:scale-95 text-black text-base md:text-lg font-bold rounded-full transition-all shadow-lg shadow-[#C9A84C]/20">
+                            Next <ChevronRight className="w-5 h-5" />
                         </button>
                     ) : (
                         <button onClick={WAMsg}
@@ -531,7 +531,7 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function MiniChip({ label }: { label: string }) {
     return (
-        <span className="text-[10px] text-[#C9A84C] bg-[#C9A84C]/10 border border-[#C9A84C]/20 rounded-full px-2 py-0.5 whitespace-nowrap">
+        <span className="text-xs md:text-sm font-bold text-[#C9A84C] bg-[#C9A84C]/10 border border-[#C9A84C]/20 rounded-full px-3 py-1 whitespace-nowrap">
             {label}
         </span>
     );
