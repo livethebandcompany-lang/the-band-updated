@@ -189,7 +189,7 @@ export default function BlogPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        Wedding & Event Music{" "}
+                        The Band Company{" "}
                         <span className="text-yellow-500 font-serif">Blogs</span>
                     </motion.h1>
                     <motion.p
