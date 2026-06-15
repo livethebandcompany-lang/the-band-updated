@@ -81,7 +81,7 @@ function WhatWeDoSection() {
                                         <item.icon className="w-6 h-6 text-yellow-500" />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-normal font-serif tracking-wide text-white mb-2 group-hover:text-yellow-500 transition-colors" style={{ fontFamily: 'var(--font-oswald)', fontWeight: 400, letterSpacing: '0.04em' }}>{item.title}</h3>
+                                        <h3 className="text-xl font-normal font-serif tracking-wide text-white mb-2 group-hover:text-yellow-500 transition-colors" style={{ fontWeight: 400, letterSpacing: '0.04em' }}>{item.title}</h3>
                                         <p className="text-zinc-500 text-sm">{item.desc}</p>
                                     </div>
                                 </motion.div>

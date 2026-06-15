@@ -91,16 +91,16 @@ html {
   scrollbar-width: none;
 }
 
-/* Apply Oswald font to all headings and bold display text */
+/* Apply Playfair Display font to all headings and serif text */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-.font-bold,
+.font-serif,
 .font-display {
-  font-family: var(--font-oswald), system-ui, sans-serif;
+  font-family: var(--font-serif), Georgia, serif;
   letter-spacing: -0.02em;
   font-weight: 600;
 }
@@ -110,11 +110,6 @@ h1,
 h2 {
   font-weight: 700;
   letter-spacing: -0.03em;
-}
-
-/* Serif elements keep Playfair Display */
-.font-serif {
-  font-family: var(--font-serif), Georgia, serif;
 }
 
 /* Body text uses Inter */
