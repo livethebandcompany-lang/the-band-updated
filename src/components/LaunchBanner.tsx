@@ -79,7 +79,7 @@ export default function LaunchBanner() {
             </AnimatePresence>
 
             {/* Central Text Overlay */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-12 md:px-4">
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-16 md:px-4">
                 <AnimatePresence mode="wait">
                     <motion.h3
                         key={`text-${currentIndex}`}
@@ -109,22 +109,22 @@ export default function LaunchBanner() {
                     e.stopPropagation();
                     prevSlide();
                 }}
-                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
+                className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 w-6 h-6 md:w-12 md:h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
                 aria-label="Previous Slide"
                 type="button"
             >
-                <ChevronLeft className="w-5 h-5 md:w-8 md:h-8 font-bold" />
+                <ChevronLeft className="w-3.5 h-3.5 md:w-8 md:h-8 font-bold" />
             </button>
             <button
                 onClick={(e) => {
                     e.stopPropagation();
                     nextSlide();
                 }}
-                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
+                className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 w-6 h-6 md:w-12 md:h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white backdrop-blur-md transition-all z-30 cursor-pointer"
                 aria-label="Next Slide"
                 type="button"
             >
-                <ChevronRight className="w-5 h-5 md:w-8 md:h-8 font-bold" />
+                <ChevronRight className="w-3.5 h-3.5 md:w-8 md:h-8 font-bold" />
             </button>
 
         </section>
