@@ -434,14 +434,14 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                 {/* Top bar */}
                 <div className="flex items-center justify-between px-6 py-4 border-b border-[#1a1408] bg-[#0a0703]/60 backdrop-blur-md md:bg-transparent md:backdrop-blur-none shrink-0 relative z-20">
                     <div>
-                        <p className="text-[#C9A84C] text-sm font-bold tracking-wider">{stepMeta.num} — {stepMeta.label}</p>
-                        <p className="text-white text-xs font-semibold mt-0.5">Step {step} of 6</p>
+                        <p className="text-[#C9A84C] text-lg md:text-xl font-bold tracking-wider">{stepMeta.num} — {stepMeta.label}</p>
+                        <p className="text-white text-sm font-semibold mt-1">Step {step} of 6</p>
                     </div>
                     {/* Step tabs — compact */}
-                    <div className="hidden sm:flex items-center gap-1">
+                    <div className="hidden sm:flex items-center gap-1.5">
                         {STEPS.map((s, i) => (
                             <button key={s.num} onClick={() => go(i+1)}
-                                className={`w-7 h-7 rounded-full text-[10px] font-bold transition-all duration-200
+                                className={`w-9 h-9 rounded-full text-xs md:text-sm font-bold transition-all duration-200
                                     ${step===i+1 ? "bg-[#C9A84C] text-black" :
                                       step>i+1  ? "bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/40" :
                                                    "bg-[#1a1408] text-white/60 font-bold border border-[#251c08]"}`}>
