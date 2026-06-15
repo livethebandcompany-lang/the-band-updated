@@ -471,8 +471,8 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                 {/* Bottom nav */}
                 <div className="shrink-0 px-6 py-4 border-t border-[#1a1408] bg-[#0a0703]/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none flex items-center justify-between gap-4 relative z-20">
                     <button onClick={prev} disabled={step===1}
-                        className="flex items-center gap-2 text-sm text-[#C9A84C] font-bold hover:text-[#b8963e] active:scale-95 disabled:active:scale-100 disabled:opacity-20 disabled:cursor-not-allowed transition-all">
-                        <ChevronLeft className="w-4 h-4" /> Back
+                        className="flex items-center gap-2 text-sm text-white font-bold hover:text-[#C9A84C] active:scale-95 disabled:active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                        <ChevronLeft className="w-4 h-4 text-white" /> Back
                     </button>
 
                     {/* Live mini-summary chips */}
