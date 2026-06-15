@@ -130,24 +130,7 @@ export default function ServicesPage() {
                 </motion.div>
             </motion.div>
 
-            {/* Introduction Section */}
-            <section className="w-full relative z-10 py-16 md:py-24">
-                <div className="max-w-4xl mx-auto px-4 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                            Unforgettable Live Music Experiences
-                        </h2>
-                        <p className="text-lg md:text-xl text-zinc-400 leading-relaxed max-w-3xl mx-auto">
-                            From intimate acoustic sessions to full-scale productions, we craft custom musical experiences that perfectly match your event's vibe. Custom build your dream band from scratch.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+
 
 
 
