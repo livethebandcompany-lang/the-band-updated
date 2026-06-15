@@ -99,7 +99,7 @@ const TF = "border-[#251c08] text-white font-semibold hover:border-[#C9A84C]/50 
 function Tag({ label, on, onClick }: { label: string; on: boolean; onClick: () => void }) {
     return (
         <button onClick={onClick}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-medium border transition-all duration-150 active:scale-95 ${on ? TO : TF}`}>
+            className={`px-3.5 py-1.5 rounded-full text-xs font-serif font-bold border transition-all duration-150 active:scale-95 ${on ? TO : TF}`}>
             {label}
         </button>
     );
@@ -214,8 +214,8 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
         });
     };
 
-    const INPUT = "w-full bg-[#0d0a05] border border-[#251c08] rounded-lg px-4 py-3 text-white text-sm font-semibold focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-white/60 appearance-none [color-scheme:dark]";
-    const LABEL = "text-[10px] font-bold uppercase tracking-widest text-[#C9A84C] mb-1 block";
+    const INPUT = "w-full bg-[#0d0a05] border border-[#251c08] rounded-lg px-4 py-3 text-white text-sm font-serif font-semibold focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-white/60 appearance-none [color-scheme:dark]";
+    const LABEL = "text-[10px] font-serif font-bold uppercase tracking-widest text-[#C9A84C] mb-1 block";
 
     // ── Step content ──────────────────────────────────────────────────────────
     const renderContent = () => {
@@ -225,9 +225,9 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                 <div className="grid grid-cols-2 gap-3">
                     {EVENT_TYPES.map(t => (
                         <button key={t} onClick={() => { setEventType(e => e===t?"":t); }}
-                            className={`px-4 py-4 rounded-lg border text-left text-base font-bold transition-all duration-150 active:scale-[0.98] flex items-center justify-between group
+                            className={`px-4 py-4 rounded-lg border text-left text-base font-serif font-bold transition-all duration-150 active:scale-[0.98] flex items-center justify-between group
                                 ${eventType===t ? CA : `${CB} ${CC} ${CH} text-white`}`}>
-                            <span className={eventType===t ? "text-[#C9A84C] font-bold" : "text-white font-bold"}>{t}</span>
+                            <span className={eventType===t ? "text-[#C9A84C] font-serif font-bold" : "text-white font-serif font-bold"}>{t}</span>
                             {eventType===t && <CheckCircle2 className="w-4 h-4 text-[#C9A84C] shrink-0" />}
                         </button>
                     ))}
@@ -241,11 +241,11 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                         const on = musicStyles.includes(s.id);
                         return (
                             <button key={s.id} onClick={() => toggleStyle(s.id)}
-                                className={`px-4 py-4 rounded-lg border text-left text-base font-bold transition-all duration-150 active:scale-[0.98] flex items-center justify-between
+                                className={`px-4 py-4 rounded-lg border text-left text-base font-serif font-bold transition-all duration-150 active:scale-[0.98] flex items-center justify-between
                                     ${on ? CA : `${CB} ${CC} ${CH} text-white`}`}>
                                 <div className="flex items-center gap-2.5">
                                     <Music className="w-4 h-4 shrink-0 text-[#C9A84C]" />
-                                    <span className={`font-bold ${on ? "text-[#C9A84C]" : "text-white"}`}>{s.label}</span>
+                                    <span className={`font-serif font-bold ${on ? "text-[#C9A84C]" : "text-white"}`}>{s.label}</span>
                                 </div>
                                 {on && <CheckCircle2 className="w-4 h-4 text-[#C9A84C] shrink-0" />}
                             </button>
@@ -294,10 +294,10 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                 <div className="grid grid-cols-2 gap-3">
                     {BAND_SIZES.map(size => (
                         <button key={size} onClick={() => setBandSize(s => s===size?"":size)}
-                            className={`py-6 px-4 rounded-xl border text-center flex flex-col items-center gap-2.5 transition-all duration-150 active:scale-[0.98]
+                            className={`py-6 px-4 rounded-xl border text-center flex flex-col items-center gap-2.5 font-serif transition-all duration-150 active:scale-[0.98]
                                 ${bandSize===size ? CA : `${CB} ${CC} ${CH}`}`}>
                             <Users className="w-6 h-6 text-[#C9A84C]" />
-                            <span className={`text-base font-bold ${bandSize===size ? "text-[#C9A84C]" : "text-white"}`}>{size}</span>
+                            <span className={`text-base font-serif font-bold ${bandSize===size ? "text-[#C9A84C]" : "text-white"}`}>{size}</span>
                         </button>
                     ))}
                 </div>
@@ -407,22 +407,22 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
 
                 {/* Brand */}
                 <div className="relative z-10 p-8">
-                    <p className="text-[#C9A84C] text-[11px] font-bold uppercase tracking-[0.3em]">The Band Company</p>
+                    <p className="text-[#C9A84C] text-[11px] font-serif font-bold uppercase tracking-[0.3em]">The Band Company</p>
                 </div>
 
                 {/* Step label */}
                 <div className="relative z-10 mt-auto p-8">
-                    <p className="text-[#C9A84C] text-[11px] font-bold uppercase tracking-widest mb-2">{stepMeta.num} / 06</p>
+                    <p className="text-[#C9A84C] text-[11px] font-serif font-bold uppercase tracking-widest mb-2">{stepMeta.num} / 06</p>
                     <h2 className="text-3xl md:text-4xl font-serif font-bold text-white leading-tight">
                         Craft Your<br /><span className="text-[#C9A84C]">Dream Band</span>
                     </h2>
-                    <p className="text-white text-sm font-semibold mt-2 max-w-[220px]">Design a live music experience as unique as your celebration.</p>
+                    <p className="text-white text-sm font-serif font-semibold mt-2 max-w-[220px]">Design a live music experience as unique as your celebration.</p>
 
                     {/* Mini progress dots */}
                     <div className="flex gap-1.5 mt-6">
                         {STEPS.map((s, i) => (
                             <button key={s.num} onClick={() => go(i+1)}
-                                className={`h-1 rounded-full transition-all duration-300 ${step===i+1 ? "w-6 bg-[#C9A84C]" : step>i+1 ? "w-3 bg-[#C9A84C]/50" : "w-3 bg-white/15"}`} />
+                                className={`h-1 rounded-full transition-all duration-300 ${step===i+1 ? "w-6 bg-[#C9A84C]" : step>i+1 ? "w-3 bg-[#C9A84C]/50" : "w-white/15"}`} />
                         ))}
                     </div>
                 </div>
@@ -434,17 +434,18 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                 {/* Top bar */}
                 <div className="flex items-center justify-between px-6 py-4 border-b border-[#1a1408] bg-[#0a0703]/60 backdrop-blur-md md:bg-transparent md:backdrop-blur-none shrink-0 relative z-20">
                     <div>
-                        <p className="text-[#C9A84C] text-2xl md:text-3xl font-bold tracking-wider">{stepMeta.num} — {stepMeta.label}</p>
-                        <p className="text-white text-base font-semibold mt-1.5">Step {step} of 6</p>
+                        <p className="text-[#C9A84C] text-2xl md:text-3xl font-serif font-bold tracking-wider" style={{ fontFamily: 'var(--font-serif)' }}>{stepMeta.num} — {stepMeta.label}</p>
+                        <p className="text-white text-base font-serif font-semibold mt-1.5" style={{ fontFamily: 'var(--font-serif)' }}>Step {step} of 6</p>
                     </div>
                     {/* Step tabs — compact */}
                     <div className="hidden sm:flex items-center gap-2">
                         {STEPS.map((s, i) => (
                             <button key={s.num} onClick={() => go(i+1)}
-                                className={`w-11 h-11 rounded-full text-sm md:text-base font-bold transition-all duration-200
+                                className={`w-11 h-11 rounded-full text-sm md:text-base font-serif font-bold transition-all duration-200
                                     ${step===i+1 ? "bg-[#C9A84C] text-black" :
                                       step>i+1  ? "bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/40" :
-                                                   "bg-[#1a1408] text-white/60 font-bold border border-[#251c08]"}`}>
+                                                   "bg-[#1a1408] text-white/60 font-bold border border-[#251c08]"}`}
+                                style={{ fontFamily: 'var(--font-serif)' }}>
                                 {step > i+1 ? "✓" : s.num}
                             </button>
                         ))}
@@ -471,7 +472,7 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
                 {/* Bottom nav */}
                 <div className="shrink-0 px-6 py-4 border-t border-[#1a1408] bg-[#0a0703]/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none flex items-center justify-between gap-4 relative z-20">
                     <button onClick={prev} disabled={step===1}
-                        className="flex items-center gap-2 text-base md:text-lg text-white font-bold hover:text-[#C9A84C] active:scale-95 disabled:active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                        className="flex items-center gap-2 text-base md:text-lg text-white font-serif font-bold hover:text-[#C9A84C] active:scale-95 disabled:active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
                         <ChevronLeft className="w-5 h-5 text-white" /> Back
                     </button>
 
@@ -485,12 +486,12 @@ export default function BandBuilder({ onRequestQuote }: { onRequestQuote?: (d: a
 
                     {step < 6 ? (
                         <button onClick={next}
-                            className="flex items-center gap-2 px-8 py-3.5 bg-[#C9A84C] hover:bg-[#b8963e] active:scale-95 text-black text-base md:text-lg font-bold rounded-full transition-all shadow-lg shadow-[#C9A84C]/20">
+                            className="flex items-center gap-2 px-8 py-3.5 bg-[#C9A84C] hover:bg-[#b8963e] active:scale-95 text-black text-base md:text-lg font-serif font-bold rounded-full transition-all shadow-lg shadow-[#C9A84C]/20">
                             Next <ChevronRight className="w-5 h-5" />
                         </button>
                     ) : (
                         <button onClick={WAMsg}
-                            className="flex items-center gap-2 px-6 py-2.5 bg-[#25D366] hover:bg-[#20BA5A] active:scale-95 text-white text-sm font-bold rounded-full transition-all">
+                            className="flex items-center gap-2 px-6 py-2.5 bg-[#25D366] hover:bg-[#20BA5A] active:scale-95 text-white text-sm font-serif font-bold rounded-full transition-all">
                             <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                             Book Now
                         </button>
