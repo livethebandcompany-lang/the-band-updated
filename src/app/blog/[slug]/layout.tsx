@@ -15,6 +15,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: `${post.title} | The Band Company Blog`,
         description: post.excerpt,
         keywords: [post.category.toLowerCase(), 'live band blog', 'wedding music tips'],
+        alternates: {
+            canonical: `/blog/${slug}`,
+        },
         openGraph: {
             title: post.title,
             description: post.excerpt,

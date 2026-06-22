@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   title: 'The Band Company | Live Music for Weddings & Events',
   description: 'Book the best live music band in Mumbai, Pune, and Maharashtra for weddings, corporate events, sangeet, haldi, and private villa parties.',
   keywords: ['live band', 'best wedding band in mumbai', 'live bands in pune', 'book a band for event'],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'The Band Company | Premium Live Music Experiences',
     description: 'Elevate your celebrations with India\'s most versatile live band.',
@@ -148,6 +151,49 @@ export default async function Home() {
       </section>
 
       <Footer />
+
+      {/* JSON-LD Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://www.thebandcompany.in/#organization",
+              "name": "The Band Company",
+              "url": "https://www.thebandcompany.in",
+              "logo": "https://res.cloudinary.com/dnr4pajkw/image/upload/b_black,c_pad,w_1200,h_630/v1772124790/the_band_company_logo_f5kq5p.png",
+              "image": "https://res.cloudinary.com/dnr4pajkw/image/upload/b_black,c_pad,w_1200,h_630/v1772124790/the_band_company_logo_f5kq5p.png",
+              "description": "Premium live music and entertainment for weddings, corporate events, sangeet, haldi, and private parties.",
+              "telephone": "+91-7779945379",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-7779945379",
+                "contactType": "sales",
+                "areaServed": "IN",
+                "availableLanguage": ["en", "hi"]
+              },
+              "sameAs": [
+                "https://facebook.com/thebandcompany",
+                "https://instagram.com/thebandcompany",
+                "https://twitter.com/thebandcompany",
+                "https://youtube.com/@thebandcompany"
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://www.thebandcompany.in/#website",
+              "name": "The Band Company",
+              "url": "https://www.thebandcompany.in",
+              "publisher": {
+                "@id": "https://www.thebandcompany.in/#organization"
+              }
+            }
+          ])
+        }}
+      />
     </main>
   );
 }
