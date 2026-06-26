@@ -133,10 +133,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col items-center justify-center font-serif font-bold tracking-tighter uppercase leading-tight drop-shadow-md text-center max-w-4xl mx-auto px-4"
+            className="flex flex-col items-center justify-center font-serif font-bold tracking-tighter uppercase leading-tight drop-shadow-md"
           >
-            <span className="text-2xl md:text-4xl lg:text-5xl relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white pb-2 bg-300%">
-              Curated Live Music For Celebrations That Deserve To Be Remembered.
+            <span className="text-3xl md:text-5xl lg:text-6xl relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white pb-2 bg-300% whitespace-nowrap">
+              Live Band, Anywhere!
             </span>
           </motion.h1>
 
