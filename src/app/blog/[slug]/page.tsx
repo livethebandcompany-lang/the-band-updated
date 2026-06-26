@@ -31,6 +31,61 @@ const HighlightText = ({ text }: { text: string }) => {
     );
 };
 
+const renderSectionContent = (content: string) => {
+    if (!content) return null;
+    const parts = content.split('\n');
+    const listItems: string[] = [];
+    const renderedElements: React.ReactNode[] = [];
+
+    const flushList = (key: string) => {
+        if (listItems.length > 0) {
+            renderedElements.push(
+                <ul key={`list-${key}`} className="space-y-4 ml-6 my-6 list-disc marker:text-yellow-500">
+                    {listItems.map((item, idx) => {
+                        const colonIndex = item.indexOf(':');
+                        if (colonIndex > 0 && colonIndex < 40) {
+                            const title = item.substring(0, colonIndex + 1);
+                            const rest = item.substring(colonIndex + 1);
+                            return (
+                                <li key={idx} className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 pl-1">
+                                    <span className="font-bold text-zinc-900 dark:text-white">{title}</span>
+                                    <HighlightText text={rest} />
+                                </li>
+                            );
+                        }
+                        return (
+                            <li key={idx} className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 pl-1">
+                                <HighlightText text={item} />
+                            </li>
+                        );
+                    })}
+                </ul>
+            );
+            listItems.length = 0;
+        }
+    };
+
+    parts.forEach((part, index) => {
+        const trimmed = part.trim();
+        if (trimmed.startsWith('●') || trimmed.startsWith('•')) {
+            const itemText = trimmed.replace(/^[●•]\s*/, '');
+            listItems.push(itemText);
+        } else {
+            flushList(`${index}`);
+            if (trimmed) {
+                renderedElements.push(
+                    <p key={`p-${index}`} className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4">
+                        <HighlightText text={trimmed} />
+                    </p>
+                );
+            }
+        }
+    });
+
+    flushList('final');
+    return renderedElements;
+};
+
 export default function BlogPostPage() {
     const params = useParams();
     const slug = params.slug as string;
@@ -246,11 +301,7 @@ export default function BlogPostPage() {
                                                 {section.heading}
                                             </h2>
                                         )}
-                                        {section.content && (
-                                            <p className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4">
-                                                <HighlightText text={section.content} />
-                                            </p>
-                                        )}
+                                        {section.content && renderSectionContent(section.content)}
                                         {section.list && (
                                             <ul className="space-y-3 ml-6 mb-4">
                                                 {section.list.map((item: string, i: number) => (
