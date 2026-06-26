@@ -52,6 +52,12 @@ export default function Footer() {
                                 <li className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-yellow-500" /> Pune</li>
                                 <li className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-yellow-500" /> Other +</li>
                             </ul>
+                            <div className="mt-4 pt-3 border-t border-zinc-200 dark:border-zinc-800/60 w-full">
+                                <h3 className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-1.5">Operating Across India</h3>
+                                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+                                    Mumbai | Pune | Lonavala | Alibaug | Karjat | Destination Celebrations
+                                </p>
+                            </div>
                         </div>
                     </div>
 
