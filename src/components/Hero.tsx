@@ -135,7 +135,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col items-center justify-center font-serif font-bold tracking-tighter uppercase leading-tight drop-shadow-md text-center max-w-5xl mx-auto px-4"
           >
-            <span className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white pb-2 bg-300% leading-tight">
+            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white pb-2 bg-300% leading-tight">
               Curated Live Music For
               <br />
               Celebrations That Deserve To

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import Image from "next/image";
 
@@ -30,6 +31,12 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
 
     // Reset activeIndex to middle if displayReels changes
     useEffect(() => {
@@ -274,8 +281,8 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
                 </div>
             )}
 
-            {/* Video Player Modal (Inline Playback) */}
-            {activeVideoUrl && (
+            {/* Video Player Modal (Inline Playback via Portal to avoid perspective transform crop on iOS) */}
+            {activeVideoUrl && mounted && createPortal(
                 <div 
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-300"
                     onClick={() => setActiveVideoUrl(null)}
@@ -320,7 +327,8 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
                             </div>
                         )}
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </section>
     );
