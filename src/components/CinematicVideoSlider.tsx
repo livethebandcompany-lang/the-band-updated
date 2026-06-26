@@ -13,12 +13,23 @@ const defaultReels = [
     { instagramUrl: "https://www.instagram.com/reel/DRecG1qDB2A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==", imageUrl: "https://res.cloudinary.com/dnr4pajkw/image/upload/v1772122196/g7.a4e54c543f59f91383a8_ohhmw7.jpg" }
 ];
 
+// Helper to extract Instagram shortcode and return embed URL
+const getInstagramEmbedUrl = (url: string) => {
+    if (!url) return "";
+    const match = url.match(/(?:reel|p|tv)\/([A-Za-z0-9_-]+)/);
+    if (match && match[1]) {
+        return `https://www.instagram.com/p/${match[1]}/embed/`;
+    }
+    return "";
+};
+
 export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
     const isExplicitlyEmpty = reels !== undefined && reels.length === 0;
     const displayReels = reels && reels.length > 0 ? reels : (isExplicitlyEmpty ? [] : defaultReels);
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
 
     // Reset activeIndex to middle if displayReels changes
     useEffect(() => {
@@ -45,14 +56,14 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
 
     // Auto-slide logic
     useEffect(() => {
-        if (isPaused || displayReels.length === 0) return;
+        if (isPaused || activeVideoUrl || displayReels.length === 0) return;
 
         const interval = setInterval(() => {
             nextSlide();
         }, 3000);
 
         return () => clearInterval(interval);
-    }, [isPaused, activeIndex, nextSlide, displayReels.length]);
+    }, [isPaused, activeVideoUrl, activeIndex, nextSlide, displayReels.length]);
 
     // Keyboard navigation
     useEffect(() => {
@@ -167,7 +178,7 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
                         return (
                             <div
                                 key={index}
-                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] md:w-[320px] aspect-[9/16] transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] md:w-[320px] aspect-[9/16] transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-pointer"
                                 style={{
                                     transform: style.transform,
                                     zIndex: style.zIndex,
@@ -175,7 +186,13 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
                                     pointerEvents: style.pointerEvents as any,
                                     filter: style.filter
                                 }}
-                                onClick={() => setActiveIndex(index)}
+                                onClick={() => {
+                                    if (isMain) {
+                                        setActiveVideoUrl(reel.instagramUrl || reel.url);
+                                    } else {
+                                        setActiveIndex(index);
+                                    }
+                                }}
                             >
                                 {/* Card Content */}
                                 <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black shadow-2xl border border-white/5 group/card">
@@ -193,15 +210,16 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
                                         {/* Play / Action overlay */}
                                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                                             {isMain ? (
-                                                <a
-                                                    href={reel.instagramUrl || reel.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setActiveVideoUrl(reel.instagramUrl || reel.url);
+                                                    }}
                                                     className="w-16 h-16 rounded-full bg-white/10 hover:bg-yellow-500 backdrop-blur-md text-white hover:text-black flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg shadow-black/40 group/btn"
-                                                    title="Watch on Instagram"
+                                                    title="Play Video"
                                                 >
                                                     <Play className="w-8 h-8 fill-current translate-x-0.5" />
-                                                </a>
+                                                </button>
                                             ) : (
                                                 <div className="w-14 h-14 rounded-full bg-black/40 text-white/70 flex items-center justify-center">
                                                     <Play className="w-6 h-6 fill-current translate-x-0.5" />
@@ -245,6 +263,55 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
                             </button>
                         </>
                     )}
+                </div>
+            )}
+
+            {/* Video Player Modal (Inline Playback) */}
+            {activeVideoUrl && (
+                <div 
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-300"
+                    onClick={() => setActiveVideoUrl(null)}
+                >
+                    {/* Close Button */}
+                    <button 
+                        className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-200 z-[110]"
+                        onClick={() => setActiveVideoUrl(null)}
+                        aria-label="Close player"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    
+                    {/* Iframe Container */}
+                    <div 
+                        className="relative w-full max-w-[450px] aspect-[9/16] px-4 md:px-0"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {getInstagramEmbedUrl(activeVideoUrl) ? (
+                            <iframe
+                                src={getInstagramEmbedUrl(activeVideoUrl)}
+                                className="w-full h-full rounded-2xl border border-white/10 shadow-2xl"
+                                frameBorder="0"
+                                scrolling="no"
+                                allowTransparency
+                                allow="encrypted-media"
+                            />
+                        ) : (
+                            <div className="w-full h-full flex flex-col items-center justify-center text-white bg-zinc-900 rounded-2xl p-6 text-center border border-white/10">
+                                <p className="text-lg font-medium text-gray-300">Could not load video player</p>
+                                <a 
+                                    href={activeVideoUrl} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="mt-4 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-full transition-all"
+                                >
+                                    Watch on Instagram
+                                </a>
+                            </div>
+                        )}
+                    </div>
                 </div>
             )}
         </section>
