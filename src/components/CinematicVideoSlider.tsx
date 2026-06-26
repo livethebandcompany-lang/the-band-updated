@@ -127,8 +127,16 @@ export default function CinematicVideoSlider({ reels }: { reels?: any[] }) {
     return (
         <section
             className="py-20 md:py-32 bg-black relative overflow-hidden perspective-[1200px] group"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            onMouseEnter={() => {
+                if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+                    setIsPaused(true);
+                }
+            }}
+            onMouseLeave={() => {
+                if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+                    setIsPaused(false);
+                }
+            }}
         >
             {/* Header */}
             <div className="container mx-auto px-4 relative z-10 mb-12 text-center">
