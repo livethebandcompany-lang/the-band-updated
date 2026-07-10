@@ -29,7 +29,7 @@ export default function Footer() {
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10">
 
                     {/* ── Col 1: Brand (full width on mobile) ── */}
-                    <div className="col-span-2 sm:col-span-2 lg:col-span-1 flex flex-col items-start">
+                    <div className="col-span-2 sm:col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start">
                         <Link href="/" className="inline-block mb-4">
                             <Image
                                 src="https://res.cloudinary.com/dnr4pajkw/image/upload/v1772124790/the_band_company_logo_f5kq5p.png"
@@ -40,7 +40,7 @@ export default function Footer() {
                                 className="h-20 sm:h-24 w-auto object-contain"
                             />
                         </Link>
-                        <p className="text-[#9a8a6a] text-sm mb-5 leading-relaxed max-w-xs">
+                        <p className="text-[#9a8a6a] text-sm mb-5 leading-relaxed max-w-xs text-center lg:text-left">
                             A premier live band offering curated live music performances for weddings, corporate events, and private celebrations.
                         </p>
                         {/* Social icons */}
