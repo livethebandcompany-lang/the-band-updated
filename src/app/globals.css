@@ -3,8 +3,8 @@
 
 @theme {
   --font-sans: var(--font-inter);
-  --font-display: var(--font-oswald);
-  --font-serif: var(--font-serif);
+  --font-display: var(--font-merriweather);
+  --font-serif: var(--font-merriweather);
 }
 
 :root {
@@ -23,7 +23,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-oswald);
+  --font-display: var(--font-merriweather);
 }
 
 body {
@@ -91,7 +91,7 @@ html {
   scrollbar-width: none;
 }
 
-/* Apply Playfair Display font to all headings and serif text */
+/* Apply Merriweather to all headings and serif/display text */
 h1,
 h2,
 h3,
@@ -100,7 +100,7 @@ h5,
 h6,
 .font-serif,
 .font-display {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-merriweather), Georgia, serif;
   letter-spacing: -0.02em;
   font-weight: 600;
 }

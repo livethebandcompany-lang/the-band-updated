@@ -134,20 +134,20 @@ function GalleryCard({ img, index }: { img: any, index: number }) {
                     className={`object-cover transition-all duration-1000 ease-out ${isInView ? 'scale-110 saturate-100' : 'scale-100 saturate-0'}`}
                 />
                 {/* Overlay - Lighter for visibility (opacity-30 instead of 40/80) */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-700 ${isInView ? 'opacity-0' : 'opacity-30'}`} />
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-700 ${isInView ? 'opacity-70' : 'opacity-90'}`} />
             </div>
 
 
             {/* Content Overlay */}
             <div className={`absolute inset-0 flex flex-col justify-end p-8 transition-transform duration-700 ${isInView ? 'translate-y-0' : 'translate-y-8'}`}>
-                <div className={`h-[1px] bg-white/50 mb-4 transition-all duration-700 ${isInView ? 'w-24' : 'w-0'}`} />
-                <span className="text-xs font-bold tracking-[0.3em] text-white/60 mb-2 uppercase">
+                <div className={`h-[1px] bg-yellow-400/70 mb-4 transition-all duration-700 ${isInView ? 'w-24' : 'w-0'}`} />
+                <span className="text-xs font-bold tracking-[0.3em] text-yellow-400/80 mb-2 uppercase">
                     0{index + 1}
                 </span>
-                <h3 className={`text-3xl font-bold text-white mb-2 tracking-tight transition-transform duration-700 ${isInView ? 'translate-x-2' : 'translate-x-0'}`}>
+                <h3 className={`text-3xl font-bold text-yellow-400 mb-2 tracking-tight drop-shadow-lg transition-transform duration-700 ${isInView ? 'translate-x-2' : 'translate-x-0'}`}>
                     {img.title}
                 </h3>
-                <p className={`text-sm text-gray-400 font-light transition-opacity duration-700 delay-100 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
+                <p className={`text-sm text-white/90 font-light drop-shadow transition-opacity duration-700 delay-100 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
                     {img.desc}
                 </p>
             </div>

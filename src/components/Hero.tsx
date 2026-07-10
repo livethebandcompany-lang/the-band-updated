@@ -133,14 +133,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col items-center justify-center font-serif font-bold tracking-tighter uppercase leading-tight drop-shadow-md text-center max-w-5xl mx-auto px-4"
+            className="flex flex-col items-center justify-center font-serif font-semibold tracking-wide leading-snug drop-shadow-md text-center max-w-4xl mx-auto px-4"
           >
-            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white pb-2 bg-300% leading-tight">
-              Curated Live Music For
+            <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl relative inline-block text-white pb-2 leading-snug">
+              Curated Live Music for
               <br />
-              Celebrations That Deserve To
+              Celebrations that deserve to
               <br />
-              Be Remembered.
+              be remembered.
             </span>
           </motion.h1>
 

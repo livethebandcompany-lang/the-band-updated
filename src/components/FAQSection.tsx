@@ -9,6 +9,7 @@ const faqData = [
         id: "cat1",
         category: "1. Services & Music Formats",
         questions: [
+            { id: "q0", q: "Why do elite families choose The Band Company?", a: "The Band Company delivers more than live music—we create refined, personalized experiences. Our professional team, premium presentation, and ability to match the mood of every celebration make us a trusted choice for luxury weddings, private parties, and destination events." },
             { id: "q1", q: "What types of live music services does The Band Company offer?", a: "The Band Company is India's premier live band booking platform, simplifying the process of hiring top-tier talent for weddings, corporate events, and parties." },
             { id: "q2", q: "Can we choose the band size based on our event?", a: "Yes. You can select a performance format depending on your venue size, guest count, and event vibe — from intimate solo sets to full live band line-ups." },
             { id: "q3", q: "Do you customise the music as per the event type?", a: "Yes. Music selection and performance style are adapted based on the event flow, audience profile, and overall mood — whether it’s soft background music or a high-energy set." },

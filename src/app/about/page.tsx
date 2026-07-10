@@ -56,7 +56,7 @@ function WhatWeDoSection() {
                             viewport={{ once: true }}
                         >
                             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
-                                What <span className="text-yellow-500">We Do</span>
+                                The Experience <span className="text-yellow-500">We Create</span>
                             </h2>
                             <p className="text-zinc-400 text-lg mb-10 leading-relaxed font-light">
                                 From intimate acoustic setups to full-band performances, The Band Company offers flexible formats including:
@@ -126,7 +126,7 @@ function WhyChooseUsSection() {
 
             <div className="container mx-auto px-4 md:px-8 lg:px-16 relative z-10 w-full">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why <span className="text-yellow-500">Choose Us</span></h2>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why <span className="text-yellow-500">The Band Company</span></h2>
                     <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
                         Elevating events with passion, professionalism, and performance.
                     </p>

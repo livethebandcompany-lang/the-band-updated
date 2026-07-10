@@ -11,8 +11,8 @@ const config: Config = {
         extend: {
             fontFamily: {
                 sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-                display: ["var(--font-oswald)", "system-ui", "sans-serif"],
-                serif: ["var(--font-serif)", "Georgia", "serif"],
+                display: ["var(--font-merriweather)", "Georgia", "serif"],
+                serif: ["var(--font-merriweather)", "Georgia", "serif"],
                 merriweather: ["var(--font-merriweather)", "serif"],
             },
         },
