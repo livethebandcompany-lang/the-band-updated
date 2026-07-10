@@ -15,7 +15,8 @@ export default function Footer() {
                     src="/footer-music-bg.png"
                     alt=""
                     fill
-                    className="object-cover object-center mix-blend-luminosity opacity-[0.07]"
+                    className="object-cover object-center mix-blend-screen opacity-[0.18]"
+                    style={{ filter: "invert(1)" }}
                     priority={false}
                 />
                 {/* Golden vignette overlay */}
