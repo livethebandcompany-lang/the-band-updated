@@ -138,9 +138,7 @@ export default function Hero() {
             <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl relative inline-block text-white pb-2 leading-snug">
               Curated Live Music for
               <br />
-              Celebrations that deserve to
-              <br />
-              be remembered.
+              Celebrations that deserve to be remembered.
             </span>
           </motion.h1>
 
