@@ -110,12 +110,12 @@ export default function Hero() {
             <NextImage
               src="https://res.cloudinary.com/dnr4pajkw/image/upload/v1772124790/the_band_company_logo_f5kq5p.png"
               alt="The Band Company Logo"
-              width={320}
-              height={320}
+              width={200}
+              height={200}
               priority
               fetchPriority="high"
               style={{ width: 'auto', height: 'auto' }}
-              className="w-36 md:w-56 lg:w-72 h-auto object-contain drop-shadow-lg"
+              className="w-24 sm:w-28 md:w-36 lg:w-44 h-auto object-contain drop-shadow-lg"
             />
           </div>
 
@@ -124,18 +124,18 @@ export default function Hero() {
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center mb-4"
+            className="flex justify-center mb-3"
           >
-            <div className="h-0.5 w-32 md:w-48 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-60"></div>
+            <div className="h-0.5 w-24 md:w-36 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-60"></div>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col items-center justify-center font-serif font-semibold tracking-wide leading-snug drop-shadow-md text-center max-w-4xl mx-auto px-4"
+            className="flex flex-col items-center justify-center font-serif font-medium tracking-wide leading-snug drop-shadow-md text-center max-w-3xl mx-auto px-4"
           >
-            <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl relative inline-block text-white pb-2 leading-snug">
+            <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl relative inline-block text-white pb-1 leading-snug">
               Curated Live Music for Celebrations that deserve to be remembered.
             </span>
           </motion.h1>

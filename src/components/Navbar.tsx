@@ -46,18 +46,18 @@ export default function Navbar() {
                 : "bg-transparent"
                 }`}
         >
-            <div className={`container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
+            <div className={`container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300 ${scrolled ? "h-14" : "h-18"}`}>
                 {/* Logo */}
                 <div className="flex items-center">
                     <Link href="/" className="flex items-center gap-2">
                         <Image
                             src="https://res.cloudinary.com/dnr4pajkw/image/upload/v1772124790/the_band_company_logo_f5kq5p.png"
                             alt="The Band Company"
-                            width={80}
-                            height={80}
+                            width={64}
+                            height={64}
                             priority
                             style={{ width: 'auto' }}
-                            className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-14" : "h-20"}`}
+                            className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-10 sm:h-11" : "h-12 sm:h-14"}`}
                         />
                     </Link>
                 </div>
