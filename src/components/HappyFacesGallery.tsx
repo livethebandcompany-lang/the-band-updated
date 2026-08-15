@@ -38,13 +38,13 @@ export default function HappyFacesGallery({ galleryImages }: { galleryImages?: a
 
     return (
         // Tall container to define scroll length (400vh)
-        <section ref={targetRef} className="relative h-[400vh] bg-zinc-100 dark:bg-black">
+        <section ref={targetRef} className="relative h-[400vh] bg-black">
 
             {/* Sticky Container - The Viewport */}
             <div className="sticky top-0 flex h-screen items-center overflow-hidden">
 
                 {/* Background Atmosphere */}
-                <div className="absolute inset-0 bg-white dark:bg-black">
+                <div className="absolute inset-0 bg-black">
                     <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 pointer-events-none" />
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/40 via-black to-black opacity-50" />
                 </div>

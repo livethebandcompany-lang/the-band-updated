@@ -65,8 +65,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning>
       <head>
+        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#09090b" />
         {/* Speed: preconnect to Google Tag Manager & analytics */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -75,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
       <body
-        className={`${inter.variable} ${merriweather.variable} antialiased font-sans bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white transition-colors`}
+        className={`${inter.variable} ${merriweather.variable} antialiased font-sans bg-zinc-950 text-white`}
       >
         {/* Tracking — all afterInteractive, never block render */}
         <AnalyticsTracker />
@@ -88,7 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <GlobalLoader />
 
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" enableSystem={false}>
           <Providers>
             <ToastProvider>
               <SmoothScrollerClient>

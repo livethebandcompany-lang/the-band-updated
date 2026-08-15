@@ -54,7 +54,7 @@ export default function LaunchBanner() {
     };
 
     return (
-        <section className="w-full h-[300px] md:h-[400px] relative overflow-hidden bg-zinc-100 dark:bg-zinc-950 group">
+        <section className="w-full h-[300px] md:h-[400px] relative overflow-hidden bg-zinc-950 group">
 
             <AnimatePresence mode="wait">
                 <motion.div

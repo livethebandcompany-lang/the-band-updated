@@ -115,7 +115,7 @@ export default function DestinationsSection({ destinations }: { destinations?: a
     React.useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
 
     return (
-        <section className="py-20 bg-zinc-50 dark:bg-zinc-950">
+        <section className="py-20 bg-zinc-950">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-normal text-white mb-4">

@@ -80,7 +80,7 @@ export default function FAQSection() {
     };
 
     return (
-        <section className="relative py-20 bg-white dark:bg-zinc-950">
+        <section className="relative py-20 bg-zinc-950 text-white">
             {/* Gradient transition from previous section */}
             <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-zinc-950 to-transparent pointer-events-none"></div>
 

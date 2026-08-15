@@ -70,7 +70,7 @@ export default function Hero() {
   const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.85]);
 
   return (
-    <section ref={heroRef} className="relative w-full min-h-[100dvh] flex flex-col items-center justify-between bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white overflow-hidden">
+    <section ref={heroRef} className="relative w-full min-h-[100dvh] flex flex-col items-center justify-between bg-zinc-950 text-white overflow-hidden">
       {/* Background Video (Removed Parallax 'y' transform for massive performance boost) */}
       <motion.div className="absolute inset-0 z-0 h-full">
 

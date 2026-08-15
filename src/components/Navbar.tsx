@@ -1,10 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Menu, User, Phone, ChevronDown, X, MessageCircle } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "./ThemeToggle";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -16,7 +15,7 @@ export default function Navbar() {
         const isActive = pathname === path || (path !== "/" && pathname?.startsWith(path));
         return `text-sm font-medium uppercase tracking-wider transition-colors pb-1 border-b-2 ${isActive
             ? "text-yellow-500 border-yellow-500"
-            : "text-zinc-700 dark:text-zinc-300 border-transparent hover:text-yellow-500 hover:border-yellow-500/50"
+            : "text-zinc-300 border-transparent hover:text-yellow-500 hover:border-yellow-500/50"
             }`;
     };
 
@@ -43,7 +42,7 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 z-[100] w-full transition-all duration-300 ${scrolled
-                ? "bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md shadow-lg"
+                ? "bg-zinc-950/85 backdrop-blur-md shadow-lg border-b border-white/5"
                 : "bg-transparent"
                 }`}
         >
@@ -144,7 +143,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.2 }}
-                        className="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-t border-zinc-200 dark:border-white/10 p-4 shadow-xl"
+                        className="md:hidden absolute top-full left-0 w-full bg-zinc-950/95 backdrop-blur-md border-t border-white/10 p-4 shadow-xl"
                     >
                         <div className="flex flex-col space-y-4">
                             <Link

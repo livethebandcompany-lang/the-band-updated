@@ -9,13 +9,12 @@
 
 :root {
   font-family: var(--font-inter);
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --background: #09090b;
+  --foreground: #fafafa;
+  --background-secondary: #18181b;
+  --border-color: #27272a;
   --primary: #E11D48;
-  /* Rose 600 */
 }
 
 @theme inline {
@@ -34,15 +33,8 @@ body {
   -webkit-overflow-scrolling: touch;  /* smooth momentum on iOS */
 }
 
-/* Light mode specific styles */
-:root {
-  --background: #ffffff;
-  --foreground: #18181b;
-  --background-secondary: #f4f4f5;
-  --border-color: #e4e4e7;
-}
-
-/* Dark mode specific styles */
+/* Dark mode theme variables */
+:root,
 .dark {
   --background: #09090b;
   --foreground: #fafafa;
