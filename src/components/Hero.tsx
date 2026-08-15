@@ -105,18 +105,19 @@ export default function Hero() {
       {/* Main Content Container - Flex Grow to push footer down */}
       <div className="relative z-10 container mx-auto px-4 flex-grow flex flex-col justify-center items-center pt-12 pb-4 md:pt-16 md:pb-6">
         <div className="text-center w-full space-y-4 animate-fade-in-up">
-          {/* Logo (Static div instead of motion.div so it renders instantly on SSR for LCP calculation) */}
+          {/* Logo */}
           <div className="mb-2 flex justify-center animate-fade-in-up">
-            <NextImage
-              src="https://res.cloudinary.com/dnr4pajkw/image/upload/v1772124790/the_band_company_logo_f5kq5p.png"
-              alt="The Band Company Logo"
-              width={200}
-              height={200}
-              priority
-              fetchPriority="high"
-              style={{ width: 'auto', height: 'auto' }}
-              className="w-24 sm:w-28 md:w-36 lg:w-44 h-auto object-contain drop-shadow-lg"
-            />
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center">
+              <NextImage
+                src="https://res.cloudinary.com/dnr4pajkw/image/upload/v1772124790/the_band_company_logo_f5kq5p.png"
+                alt="The Band Company Logo"
+                width={175}
+                height={175}
+                priority
+                fetchPriority="high"
+                className="w-full h-full object-contain drop-shadow-md"
+              />
+            </div>
           </div>
 
           {/* Decorative Line Above */}
