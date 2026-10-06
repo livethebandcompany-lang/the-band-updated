@@ -42,53 +42,109 @@ export const metadata: Metadata = {
   }
 };
 
+import {
+  defaultTeam,
+  defaultHappyFaces,
+  defaultTrendingMoments,
+  defaultLineups,
+  defaultDestinations,
+} from "@/data/seedData";
+
 export default async function Home() {
-  await connectDB();
-  await seedIfEmpty();
-
-  const [team, happyFaces, trendingMoments, lineups, destinations] = await Promise.all([
-    TeamMember.find().sort({ order: 1 }),
-    HappyFace.find().sort({ order: 1 }),
-    TrendingMoment.find().sort({ order: 1 }),
-    LineupItem.find().sort({ order: 1 }),
-    Destination.find().sort({ order: 1 })
-  ]);
-
-  // Map Mongoose documents to plain JS objects to avoid serialization issues
-  const plainTeam = team.map(doc => ({
-    id: doc._id.toString(),
+  let plainTeam = defaultTeam.map((doc, idx) => ({
+    id: String(idx),
     name: doc.name,
     role: doc.role,
     image: doc.image,
-    type: doc.type
+    type: doc.type,
   }));
 
-  const plainHappyFaces = happyFaces.map(doc => ({
-    id: doc._id.toString(),
+  let plainHappyFaces = defaultHappyFaces.map((doc, idx) => ({
+    id: String(idx),
     src: doc.src,
     title: doc.title,
-    desc: doc.desc
+    desc: doc.desc,
   }));
 
-  const plainTrendingMoments = trendingMoments.map(doc => ({
-    id: doc._id.toString(),
+  let plainTrendingMoments = defaultTrendingMoments.map((doc, idx) => ({
+    id: String(idx),
     instagramUrl: doc.instagramUrl || '',
-    imageUrl: doc.imageUrl
+    imageUrl: doc.imageUrl,
   }));
 
-  const plainLineups = lineups.map(doc => ({
-    id: doc._id.toString(),
+  let plainLineups = defaultLineups.map((doc, idx) => ({
+    id: String(idx),
     name: doc.name,
     image: doc.image,
-    description: doc.description
+    description: doc.description,
   }));
 
-  const plainDestinations = destinations.map(doc => ({
-    id: doc._id.toString(),
+  let plainDestinations = defaultDestinations.map((doc, idx) => ({
+    id: String(idx),
     name: doc.name,
     icon: doc.icon,
-    slug: doc.slug
+    slug: doc.slug,
   }));
+
+  try {
+    await connectDB();
+    await seedIfEmpty();
+
+    const [team, happyFaces, trendingMoments, lineups, destinations] = await Promise.all([
+      TeamMember.find().sort({ order: 1 }),
+      HappyFace.find().sort({ order: 1 }),
+      TrendingMoment.find().sort({ order: 1 }),
+      LineupItem.find().sort({ order: 1 }),
+      Destination.find().sort({ order: 1 }),
+    ]);
+
+    if (team?.length) {
+      plainTeam = team.map((doc) => ({
+        id: doc._id.toString(),
+        name: doc.name,
+        role: doc.role,
+        image: doc.image,
+        type: doc.type,
+      }));
+    }
+
+    if (happyFaces?.length) {
+      plainHappyFaces = happyFaces.map((doc) => ({
+        id: doc._id.toString(),
+        src: doc.src,
+        title: doc.title,
+        desc: doc.desc,
+      }));
+    }
+
+    if (trendingMoments?.length) {
+      plainTrendingMoments = trendingMoments.map((doc) => ({
+        id: doc._id.toString(),
+        instagramUrl: doc.instagramUrl || '',
+        imageUrl: doc.imageUrl,
+      }));
+    }
+
+    if (lineups?.length) {
+      plainLineups = lineups.map((doc) => ({
+        id: doc._id.toString(),
+        name: doc.name,
+        image: doc.image,
+        description: doc.description,
+      }));
+    }
+
+    if (destinations?.length) {
+      plainDestinations = destinations.map((doc) => ({
+        id: doc._id.toString(),
+        name: doc.name,
+        icon: doc.icon,
+        slug: doc.slug,
+      }));
+    }
+  } catch (error) {
+    console.error("MongoDB connection failed on Home page, using default seed fallback:", error);
+  }
 
   return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 relative">
