@@ -7,6 +7,10 @@ import DownloadButton from '@/components/admin/DownloadButton';
 export const metadata: Metadata = {
   title: 'Invoice | The Band Company',
   description: 'Booking Invoice',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 async function getBooking(id: string) {

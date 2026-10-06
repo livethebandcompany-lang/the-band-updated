@@ -124,27 +124,22 @@ function BlogCard({ post, index }: { post: typeof blogPosts[0]; index: number })
 }
 
 export default function BlogPage() {
-    const [blogsList, setBlogsList] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [blogsList, setBlogsList] = useState<any[]>(blogPosts);
+    const [isLoading, setIsLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
 
     useEffect(() => {
-        setIsLoading(true);
         fetch('/api/public/blogs')
             .then(res => res.json())
             .then(data => {
-                if (data && data.blogs) {
+                if (data && data.blogs && data.blogs.length > 0) {
                     setBlogsList(data.blogs);
-                } else {
-                    setBlogsList(blogPosts); // Fallback
                 }
             })
             .catch(err => {
                 console.error("Error fetching blogs:", err);
-                setBlogsList(blogPosts); // Fallback
-            })
-            .finally(() => setIsLoading(false));
+            });
     }, []);
 
     // Filter blogs based on search and category

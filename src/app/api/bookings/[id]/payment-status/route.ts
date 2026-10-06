@@ -7,10 +7,12 @@ import Razorpay from 'razorpay';
 import { handleBookingConfirmation } from '@/lib/booking-service';
 import Notification from '@/models/Notification';
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || '',
-  key_secret: process.env.RAZORPAY_KEY_SECRET || '',
-});
+function getRazorpay() {
+  return new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_placeholder',
+    key_secret: process.env.RAZORPAY_KEY_SECRET || 'rzp_test_placeholder',
+  });
+}
 
 export async function GET(
   _req: NextRequest,
@@ -36,7 +38,7 @@ export async function GET(
     // Proactively check Razorpay if not paid (especially useful for local dev without webhooks)
     if (booking.paymentStatus !== 'paid' && booking.razorpayLinkId) {
       try {
-        const link = await razorpay.paymentLink.fetch(booking.razorpayLinkId);
+        const link = await getRazorpay().paymentLink.fetch(booking.razorpayLinkId);
         if (link.status === 'paid' || link.status === 'partially_paid') {
           // Update database
           booking.paymentStatus = 'paid';

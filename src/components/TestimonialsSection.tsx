@@ -104,7 +104,7 @@ export default function TestimonialsSection() {
     });
 
     return (
-        <section className="py-24 bg-zinc-950 text-white relative overflow-hidden">
+        <section id="reviews" className="py-24 bg-zinc-950 text-white relative overflow-hidden scroll-mt-20">
             {/* Background Effects */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 {/* Radial Gradient Background */}

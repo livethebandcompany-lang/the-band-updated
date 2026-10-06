@@ -6,11 +6,12 @@ import Booking from '@/models/Booking';
 import Razorpay from 'razorpay';
 import { sendPaymentLinkEmail } from '@/lib/mailer';
 
-// Initializing Razorpay
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || '',
-  key_secret: process.env.RAZORPAY_KEY_SECRET || '',
-});
+function getRazorpay() {
+  return new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_placeholder',
+    key_secret: process.env.RAZORPAY_KEY_SECRET || 'rzp_test_placeholder',
+  });
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,7 +37,7 @@ export async function POST(req: NextRequest) {
 
     // 1. Create Razorpay Payment Link
     const amountInPaisa = Math.round(booking.totalAmount * 100);
-    const paymentLink = await razorpay.paymentLink.create({
+    const paymentLink = await getRazorpay().paymentLink.create({
       amount: amountInPaisa,
       currency: 'INR',
       accept_partial: false,

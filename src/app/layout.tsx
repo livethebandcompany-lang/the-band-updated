@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     "corporate event band", "live singer lonavala", "alibaug wedding music",
     "destination wedding band",
   ],
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     title: "The Band Company | Premium Live Music Experiences",
     description:
