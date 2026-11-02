@@ -3,7 +3,8 @@ import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import path from 'path';
 
-// Load environment variables from .env
+// Load environment variables from .env.local or .env
+dotenv.config({ path: path.join(process.cwd(), '.env.local') });
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 
 const MONGODB_URI = process.env.MONGODB_URI!;
