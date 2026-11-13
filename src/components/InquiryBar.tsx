@@ -6,12 +6,18 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useToast } from "@/context/ToastContext";
 
-export default function InquiryBar({ className = "", source = "Inquiry Bar", dropdownDirection = "down" }: { className?: string; source?: string; dropdownDirection?: "up" | "down" }) {
-    const [destination, setDestination] = useState("");
+export default function InquiryBar({ className = "", source = "Inquiry Bar", dropdownDirection = "down", selectedDestination = "" }: { className?: string; source?: string; dropdownDirection?: "up" | "down"; selectedDestination?: string }) {
+    const [destination, setDestination] = useState(selectedDestination || "");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [date, setDate] = useState("");
     const [loading, setLoading] = useState(false);
     const [minDate, setMinDate] = useState("");
+
+    useEffect(() => {
+        if (selectedDestination) {
+            setDestination(selectedDestination);
+        }
+    }, [selectedDestination]);
 
     useEffect(() => {
         const today = new Date();
