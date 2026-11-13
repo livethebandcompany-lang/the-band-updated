@@ -98,84 +98,118 @@ export default function Hero() {
   // Transform scroll progress to opacity values (darkens as you scroll)
   const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.85]);
 
-  const requestLocation = useCallback(() => {
-    if (typeof window === "undefined" || !navigator.geolocation) {
-      setLocation("destination");
-      return;
-    }
+  const processPosition = useCallback(async (position: GeolocationPosition) => {
+    const { latitude, longitude } = position.coords;
 
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
+    // Check distance to Lonavala and Pune
+    // Lonavala center: 18.7557, 73.4091 (radius ~25km)
+    const distToLonavala = getDistanceFromLatLonInKm(latitude, longitude, 18.7557, 73.4091);
+    // Pune center: 18.5204, 73.8567 (radius ~45km)
+    const distToPune = getDistanceFromLatLonInKm(latitude, longitude, 18.5204, 73.8567);
 
-        // Check distance to Lonavala and Pune
-        // Lonavala center: 18.7557, 73.4091 (radius ~25km)
-        const distToLonavala = getDistanceFromLatLonInKm(latitude, longitude, 18.7557, 73.4091);
-        // Pune center: 18.5204, 73.8567 (radius ~45km)
-        const distToPune = getDistanceFromLatLonInKm(latitude, longitude, 18.5204, 73.8567);
+    let resolved: LocationKey = "destination";
 
-        let resolved: LocationKey = "destination";
-
-        if (distToLonavala <= 25) {
-          resolved = "lonavala";
-        } else if (distToPune <= 45) {
-          resolved = "pune";
-        } else {
-          // Attempt reverse geocoding fallback
-          try {
-            const res = await fetch(
-              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10`,
-              { signal: AbortSignal.timeout(2500) }
-            );
-            if (res.ok) {
-              const data = await res.json();
-              const addr = JSON.stringify(data.address || {}).toLowerCase();
-              if (addr.includes("lonavala") || addr.includes("lonavla")) {
-                resolved = "lonavala";
-              } else if (addr.includes("pune") || addr.includes("poona")) {
-                resolved = "pune";
-              }
-            }
-          } catch {
-            // Reverse geocode failed or timed out; stick with distance result
+    if (distToLonavala <= 25) {
+      resolved = "lonavala";
+    } else if (distToPune <= 45) {
+      resolved = "pune";
+    } else {
+      // Attempt reverse geocoding fallback
+      try {
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10`,
+          { signal: AbortSignal.timeout(2000) }
+        );
+        if (res.ok) {
+          const data = await res.json();
+          const addr = JSON.stringify(data.address || {}).toLowerCase();
+          if (addr.includes("lonavala") || addr.includes("lonavla")) {
+            resolved = "lonavala";
+          } else if (addr.includes("pune") || addr.includes("poona")) {
+            resolved = "pune";
           }
         }
-
-        setLocation(resolved);
-
-        try {
-          localStorage.setItem("tbc_hero_location", resolved);
-        } catch {
-          // ignore localStorage error
-        }
-      },
-      (error) => {
-        console.warn("Geolocation permission error:", error.message);
-        setLocation("destination");
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 8000,
-        maximumAge: 300000,
+      } catch {
+        // Reverse geocode failed; stick with destination
       }
-    );
+    }
+
+    setLocation(resolved);
   }, []);
 
   useEffect(() => {
-    // Check saved preference first
+    // Clear any previous stale cache
     try {
-      const saved = localStorage.getItem("tbc_hero_location") as LocationKey | null;
-      if (saved && ["pune", "lonavala", "destination"].includes(saved)) {
-        setLocation(saved);
-        return;
-      }
+      localStorage.removeItem("tbc_hero_location");
     } catch {
       // ignore
     }
 
-    // Automatically ask for location via browser prompt
-    requestLocation();
-  }, [requestLocation]);
+    // Default to destination until live location is granted and verified
+    setLocation("destination");
+
+    if (typeof window === "undefined" || !navigator.geolocation) {
+      return;
+    }
+
+    const geoOptions: PositionOptions = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0, // Never use stale cached coordinates
+    };
+
+    // 1. Prompt and get current live position immediately
+    navigator.geolocation.getCurrentPosition(
+      processPosition,
+      (error) => {
+        console.warn("Geolocation denied or unavailable:", error.message);
+        setLocation("destination");
+      },
+      geoOptions
+    );
+
+    // 2. Watch for real-time location changes (user moves or simulates different coordinates)
+    const watchId = navigator.geolocation.watchPosition(
+      processPosition,
+      (error) => {
+        console.warn("Geolocation watch error:", error.message);
+        setLocation("destination");
+      },
+      geoOptions
+    );
+
+    // 3. Listen to browser permission state changes (e.g. user resets or changes site permission)
+    let permissionStatusRef: PermissionStatus | null = null;
+    const handlePermissionChange = () => {
+      if (!permissionStatusRef) return;
+      if (permissionStatusRef.state === "denied" || permissionStatusRef.state === "prompt") {
+        setLocation("destination");
+      } else if (permissionStatusRef.state === "granted") {
+        navigator.geolocation.getCurrentPosition(
+          processPosition,
+          () => setLocation("destination"),
+          geoOptions
+        );
+      }
+    };
+
+    if (navigator.permissions && navigator.permissions.query) {
+      navigator.permissions
+        .query({ name: "geolocation" as PermissionName })
+        .then((status) => {
+          permissionStatusRef = status;
+          status.addEventListener("change", handlePermissionChange);
+        })
+        .catch(() => {});
+    }
+
+    return () => {
+      navigator.geolocation.clearWatch(watchId);
+      if (permissionStatusRef) {
+        permissionStatusRef.removeEventListener("change", handlePermissionChange);
+      }
+    };
+  }, [processPosition]);
 
   const currentConfig = LOCATION_CONFIG[location] || LOCATION_CONFIG.destination;
 
