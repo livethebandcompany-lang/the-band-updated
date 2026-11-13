@@ -135,14 +135,14 @@ export default function AdminSidebar({ role, isDbConnected = false }: AdminSideb
       <div className="p-6 border-b border-zinc-200 dark:border-zinc-800/50">
         <Link href="/admin" className="block">
           <div className="flex flex-col items-center">
-            <div className="w-36 h-36 rounded-full flex items-center justify-center">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-zinc-950 flex items-center justify-center p-3 shadow-md border border-zinc-800">
               <img 
                 src="https://res.cloudinary.com/dnr4pajkw/image/upload/v1772124790/the_band_company_logo_f5kq5p.png" 
                 alt="Company Logo" 
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="mt-6 text-center px-2">
+            <div className="mt-4 text-center px-2">
               <h2 className="text-sm font-black uppercase tracking-[0.2em] text-zinc-900 dark:text-white leading-tight">
                 The Band Company
               </h2>

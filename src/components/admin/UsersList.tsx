@@ -55,11 +55,11 @@ export default function UsersList({ initialUsers }: { initialUsers: User[] }) {
 
   return (
     <>
-      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-zinc-950/50 border-b border-zinc-800">
+              <tr className="bg-zinc-50 dark:bg-zinc-950/50 border-b border-zinc-200 dark:border-zinc-800">
                 <th className="px-6 py-4 text-[10px] font-bold text-zinc-500 uppercase tracking-widest">User</th>
                 <th className="px-6 py-4 text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Role</th>
                 <th className="px-6 py-4 text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Status</th>
@@ -67,16 +67,16 @@ export default function UsersList({ initialUsers }: { initialUsers: User[] }) {
                 <th className="px-6 py-4 text-[10px] font-bold text-zinc-500 uppercase tracking-widest text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800">
+            <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
               {initialUsers.map((user) => (
-                <tr key={user._id} className="hover:bg-zinc-800/30 transition-colors">
+                <tr key={user._id} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/30 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-[10px] font-bold text-zinc-500 uppercase">
+                      <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-[10px] font-bold text-zinc-600 dark:text-zinc-500 uppercase">
                         {user.name.charAt(0)}
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-white">{user.name}</div>
+                        <div className="text-sm font-bold text-zinc-900 dark:text-white">{user.name}</div>
                         <div className="text-[10px] text-zinc-500 font-medium">{user.email}</div>
                       </div>
                     </div>
@@ -92,8 +92,8 @@ export default function UsersList({ initialUsers }: { initialUsers: User[] }) {
                       disabled={loadingId === user._id}
                       className={`flex items-center gap-1.5 px-2 py-1 rounded-lg transition-all ${
                         user.isActive 
-                          ? 'text-green-500 hover:bg-green-500/10' 
-                          : 'text-red-500 hover:bg-red-500/10'
+                          ? 'text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-500/10' 
+                          : 'text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10'
                       } ${loadingId === user._id ? 'opacity-50 animate-pulse' : ''}`}
                       title={user.isActive ? 'Click to Deactivate' : 'Click to Activate'}
                     >
@@ -108,7 +108,7 @@ export default function UsersList({ initialUsers }: { initialUsers: User[] }) {
                   <td className="px-6 py-4 whitespace-nowrap text-right">
                     <button
                       onClick={() => setSelectedUser(user)}
-                      className="text-xs font-bold text-yellow-500 hover:text-yellow-400 transition-colors px-3 py-1 bg-yellow-500/10 rounded-md border border-yellow-500/20"
+                      className="text-xs font-bold text-yellow-600 dark:text-yellow-500 hover:text-yellow-700 dark:hover:text-yellow-400 transition-colors px-3 py-1 bg-yellow-50 dark:bg-yellow-500/10 rounded-md border border-yellow-200 dark:border-yellow-500/20 shadow-xs"
                     >
                       Manage
                     </button>

@@ -345,6 +345,11 @@ export default async function AdminDashboard() {
                         </div>
                      </div>
                    ))}
+                   {(!data.recentBookings || data.recentBookings.length === 0) && (
+                     <div className="py-12 text-center border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-xl bg-zinc-50/50 dark:bg-zinc-900/50">
+                        <p className="text-sm font-medium text-zinc-500">No recent activity logged</p>
+                     </div>
+                   )}
                 </div>
              </div>
           </div>
@@ -368,8 +373,8 @@ function StatCard({ icon, label, value, trend, color }: any) {
         <div className={`p-2.5 rounded-xl border ${colorMap[color]}`}>
           {icon}
         </div>
-        <div className="px-2 py-1 bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-700/50 rounded-md">
-           <p className="text-xs font-medium text-zinc-600 dark:text-zinc-400">{trend}</p>
+        <div className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/50 rounded-md">
+           <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">{trend}</p>
         </div>
       </div>
       <div>

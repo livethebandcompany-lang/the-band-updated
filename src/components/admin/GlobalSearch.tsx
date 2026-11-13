@@ -119,7 +119,7 @@ export default function GlobalSearch() {
     <div className="relative flex-1 max-w-sm">
       {/* Search Input */}
       <div
-        className={`flex items-center gap-2 bg-zinc-100 dark:bg-zinc-900/50 border rounded-lg px-3 py-1.5 w-full transition-all ${
+        className={`flex items-center gap-2 bg-white dark:bg-zinc-900/50 border rounded-lg px-3 py-1.5 w-full transition-all shadow-xs ${
           isOpen
             ? 'border-blue-500/50 ring-1 ring-blue-500/30 dark:ring-blue-500/20'
             : 'border-zinc-200 dark:border-zinc-800/50'

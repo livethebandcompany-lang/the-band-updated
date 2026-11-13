@@ -149,8 +149,8 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
 
   return (
     <div className="space-y-6">
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-2xl">
-        <div className="hidden lg:grid grid-cols-12 gap-6 p-6 border-b border-zinc-800 bg-zinc-900/50">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-sm dark:shadow-2xl">
+        <div className="hidden lg:grid grid-cols-12 gap-6 p-6 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
           <div className="col-span-3 text-xs font-black tracking-widest text-zinc-500 uppercase">Lead Record</div>
           <div className="col-span-3 text-xs font-black tracking-widest text-zinc-500 uppercase">Event Specs</div>
           <div className="col-span-2 text-xs font-black tracking-widest text-zinc-500 uppercase">Location & Stay</div>
@@ -158,28 +158,28 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
           <div className="col-span-2 text-xs font-black tracking-widest text-zinc-500 uppercase text-right">Actions</div>
         </div>
 
-        <div className="divide-y divide-zinc-800/50">
+        <div className="divide-y divide-zinc-200 dark:divide-zinc-800/50">
           {filteredBookings.length > 0 ? (
             filteredBookings.map((booking) => (
               <div 
                 key={booking._id} 
-                className="group relative transition-all duration-300 hover:bg-zinc-800/30"
+                className="group relative transition-all duration-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
               >
                 <div className="lg:grid grid-cols-12 gap-6 p-6 items-center">
                   
                   {/* Subject Name / Phone Info */}
                   <div className="col-span-3 space-y-2.5 mb-6 lg:mb-0">
                     <div className="flex items-center gap-3">
-                       <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-xs font-bold text-zinc-400">
+                       <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-xs font-bold text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
                          {booking.clientName.charAt(0).toUpperCase()}
                        </div>
                        <div>
-                         <h3 className="font-bold text-white tracking-tight">{booking.clientName}</h3>
+                         <h3 className="font-bold text-zinc-900 dark:text-white tracking-tight">{booking.clientName}</h3>
                          <p className="text-[11px] font-medium text-zinc-500 mt-0.5">{booking.clientPhone}</p>
                        </div>
                     </div>
                     {booking.source && (
-                       <div className="inline-flex px-2 py-0.5 rounded-md bg-zinc-800 border border-zinc-700 text-[9px] font-black uppercase text-zinc-400 tracking-widest">
+                       <div className="inline-flex px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-[9px] font-black uppercase text-zinc-600 dark:text-zinc-400 tracking-widest">
                          Src: {booking.source.replace('_', ' ')}
                        </div>
                     )}
@@ -187,25 +187,25 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
 
                   {/* Event Timing Info */}
                   <div className="col-span-3 space-y-2 mb-6 lg:mb-0">
-                    <div className="flex items-center gap-2 text-zinc-300">
+                    <div className="flex items-center gap-2 text-zinc-800 dark:text-zinc-300">
                       <CalendarIcon size={14} className="text-zinc-500" />
                       <span className="text-sm font-semibold">
                         {new Date(booking.eventDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-zinc-400 text-xs font-medium">
-                      <Clock size={14} className="text-zinc-600" />
+                    <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs font-medium">
+                      <Clock size={14} className="text-zinc-400 dark:text-zinc-600" />
                       {booking.startTime} - {booking.endTime}
                     </div>
                     <div className="flex gap-2">
-                       <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">{booking.eventType}</span>
-                       <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">{booking.performanceType}</span>
+                       <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 border border-yellow-500/20">{booking.eventType}</span>
+                       <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">{booking.performanceType}</span>
                     </div>
                   </div>
 
                   {/* Location Info */}
                   <div className="col-span-2 space-y-2.5 mb-6 lg:mb-0">
-                    <div className="flex items-start gap-2 text-zinc-300">
+                    <div className="flex items-start gap-2 text-zinc-800 dark:text-zinc-300">
                       <MapPin size={14} className="text-zinc-500 shrink-0 mt-0.5" />
                       <div>
                          <p className="text-sm font-semibold truncate max-w-[150px]">{booking.venueName}</p>
@@ -213,7 +213,7 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                       </div>
                     </div>
                     {booking.stayRequired && (
-                      <span className="inline-flex px-2 py-1 rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20 text-[9px] font-black uppercase tracking-widest">
+                       <span className="inline-flex px-2 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-500 border border-amber-500/20 text-[9px] font-black uppercase tracking-widest">
                         Stay Required
                       </span>
                     )}
@@ -222,7 +222,7 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                   {/* Pricing Overview */}
                   <div className="col-span-2 space-y-1 mb-6 lg:mb-0">
                     <div className="flex items-baseline gap-1.5">
-                       <p className="text-lg font-black text-white italic tracking-tight">₹{booking.totalAmount.toLocaleString('en-IN')}</p>
+                       <p className="text-lg font-black text-zinc-900 dark:text-white italic tracking-tight">₹{booking.totalAmount.toLocaleString('en-IN')}</p>
                     </div>
                     <div className="flex items-center gap-2">
                        <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
@@ -231,14 +231,14 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                     </div>
                     <div className="flex gap-2 mt-2">
                        {booking.paymentStatus === 'paid' ? (
-                          <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Paid</span>
+                          <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border border-emerald-500/20">Paid</span>
                        ) : (
-                          <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">Pending</span>
+                          <span className="px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 border border-yellow-500/20">Pending</span>
                        )}
                        {booking.paymentMode === 'cash' ? (
-                          <span className="px-2 py-1 rounded flex items-center gap-1.5 bg-zinc-800 text-[9px] font-black uppercase text-zinc-400 tracking-widest"><Banknote size={10}/> Cash</span>
+                          <span className="px-2 py-1 rounded flex items-center gap-1.5 bg-zinc-100 dark:bg-zinc-800 text-[9px] font-black uppercase text-zinc-600 dark:text-zinc-400 tracking-widest border border-zinc-200 dark:border-zinc-700"><Banknote size={10}/> Cash</span>
                        ) : (
-                          <span className="px-2 py-1 rounded flex items-center gap-1.5 bg-blue-500/10 text-[9px] font-black uppercase text-blue-400 tracking-widest border border-blue-500/20"><CreditCard size={10}/> Online</span>
+                          <span className="px-2 py-1 rounded flex items-center gap-1.5 bg-blue-500/10 text-[9px] font-black uppercase text-blue-600 dark:text-blue-400 tracking-widest border border-blue-500/20"><CreditCard size={10}/> Online</span>
                        )}
                     </div>
                   </div>
@@ -247,7 +247,7 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                   <div className="col-span-2 flex items-center justify-end gap-3">
                      <button
                        onClick={() => setSelectedBooking(booking)}
-                       className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white rounded-full transition-all duration-300"
+                       className="w-10 h-10 flex items-center justify-center bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full transition-all duration-300"
                        title="Manage Operations"
                      >
                        <Settings2 size={18} />
@@ -257,7 +257,7 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                        <a
                          href={`/api/bookings/${booking._id}/download`}
                          download={`Invoice_${booking.invoiceNumber}.pdf`}
-                         className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 text-amber-500 rounded-full transition-all duration-300 shadow-[0_0_20px_-10px_rgba(245,158,11,0.4)]"
+                         className="w-10 h-10 flex items-center justify-center bg-amber-50 hover:bg-amber-100 dark:bg-zinc-900 border border-amber-200 dark:border-zinc-800 hover:border-amber-500/50 text-amber-600 dark:text-amber-500 rounded-full transition-all duration-300 shadow-sm"
                          title="Download Official PDF Invoice"
                        >
                          <Download size={18} />
@@ -268,7 +268,7 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                        <button
                          onClick={() => handleCheckPaymentStatus(booking._id)}
                          disabled={loadingId === booking._id}
-                         className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-emerald-400 disabled:opacity-30 rounded-full transition-all duration-300"
+                         className="w-10 h-10 flex items-center justify-center bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 disabled:opacity-30 rounded-full transition-all duration-300"
                          title="Sync/Check Razorpay Payment Status"
                        >
                          <RefreshCw size={18} className={loadingId === booking._id ? 'animate-spin' : ''} />
@@ -278,7 +278,7 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                      <button
                        onClick={() => handleSendPaymentLink(booking._id)}
                        disabled={loadingId === booking._id || booking.paymentMode === 'cash'}
-                       className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-blue-400 disabled:opacity-30 rounded-full transition-all duration-300"
+                       className="w-10 h-10 flex items-center justify-center bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 disabled:opacity-30 rounded-full transition-all duration-300"
                        title="Send Payment Link"
                      >
                        <Send size={18} />
@@ -288,7 +288,7 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
                        <button
                          onClick={() => handleDelete(booking._id)}
                          disabled={loadingId === booking._id}
-                         className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-red-900/50 text-zinc-400 hover:text-red-500 disabled:opacity-30 rounded-full transition-all duration-300"
+                         className="w-10 h-10 flex items-center justify-center bg-zinc-100 hover:bg-red-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-red-300 dark:hover:border-red-900/50 text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-500 disabled:opacity-30 rounded-full transition-all duration-300"
                          title="Purge Record"
                        >
                          <Trash2 size={18} />
@@ -300,11 +300,11 @@ export default function BookingsList({ initialBookings, isAdmin, isSuperAdmin }:
             ))
           ) : (
             <div className="flex flex-col items-center justify-center py-24 px-4 text-center">
-              <div className="w-16 h-16 bg-zinc-900 border border-zinc-800 rounded-3xl flex items-center justify-center mb-6">
-                <Filter className="w-6 h-6 text-zinc-700" />
+              <div className="w-16 h-16 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl flex items-center justify-center mb-6">
+                <Filter className="w-6 h-6 text-zinc-400 dark:text-zinc-700" />
               </div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-2">Queue Empty</h3>
-              <p className="text-xs text-zinc-500 font-medium">No pending deals logged in the pipeline.</p>
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-widest mb-2">Queue Empty</h3>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">No pending deals logged in the pipeline.</p>
             </div>
           )}
         </div>

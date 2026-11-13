@@ -102,7 +102,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
     <>
       <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-8">
         <div>
-          <h1 className="text-4xl font-black text-white tracking-tighter italic uppercase flex items-center gap-4">
+          <h1 className="text-4xl font-black text-zinc-900 dark:text-white tracking-tighter italic uppercase flex items-center gap-4">
             <Database size={32} className="text-yellow-500" />
             Master Database
           </h1>
@@ -113,27 +113,27 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
         
         <div className="flex flex-wrap items-center gap-4">
            {/* Global Search Interface */}
-           <div className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-2xl px-5 py-3 group focus-within:border-yellow-500/50 transition-all">
-              <Search size={16} className="text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
+           <div className="flex items-center gap-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl px-5 py-3 group focus-within:border-yellow-500/50 transition-all shadow-xs">
+              <Search size={16} className="text-zinc-400 dark:text-zinc-500 group-focus-within:text-yellow-500 transition-colors" />
               <input 
                  type="text" 
                  value={searchQuery}
                  onChange={e => setSearchQuery(e.target.value)}
                  placeholder="Search Clients / Phone..." 
-                 className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-white focus:outline-none w-48 placeholder:text-zinc-700" 
+                 className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-zinc-900 dark:text-white focus:outline-none w-48 placeholder:text-zinc-400 dark:placeholder:text-zinc-700" 
               />
            </div>
            
            <button 
              onClick={() => setShowFilters(!showFilters)}
-             className={`flex items-center gap-3 px-6 py-3.5 border rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${showFilters ? 'bg-zinc-800 border-zinc-700 text-white' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'}`}
+             className={`flex items-center gap-3 px-6 py-3.5 border rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-xs ${showFilters ? 'bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white' : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'}`}
            >
               <Filter size={16} /> Filters
            </button>
 
            <button 
              onClick={() => exportBookingsToExcel(filteredBookings, 'Master_Archive_Export')}
-             className="flex items-center gap-3 px-8 py-3.5 bg-yellow-500 border border-yellow-400 rounded-2xl text-[10px] font-black uppercase tracking-widest text-black hover:bg-yellow-400 transition-all"
+             className="flex items-center gap-3 px-8 py-3.5 bg-yellow-500 hover:bg-yellow-400 border border-yellow-400 rounded-2xl text-[10px] font-black uppercase tracking-widest text-black transition-all shadow-sm"
            >
               <Download size={16} />
               Export .xlsx
@@ -143,14 +143,14 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
 
       {/* Extreme Filter Dashboard */}
       {showFilters && (
-         <div className="bg-zinc-900 border border-zinc-800 rounded-[2rem] p-6 mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in slide-in-from-top-4 fade-in duration-300">
+         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[2rem] p-6 mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in slide-in-from-top-4 fade-in duration-300 shadow-sm">
             {/* Timeline Filter */}
             <div className="space-y-2">
                <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest block">Event Timeline</label>
                <select 
                  value={filters.dateRange} 
                  onChange={(e) => setFilters({...filters, dateRange: e.target.value})}
-                 className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
+                 className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
                >
                   <option value="all">Lifetime History</option>
                   <option value="month">This Month</option>
@@ -159,8 +159,8 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                </select>
                {filters.dateRange === 'custom' && (
                   <div className="flex gap-2 mt-2">
-                     <input type="date" value={filters.customStart} onChange={(e) => setFilters({...filters, customStart: e.target.value})} className="w-1/2 bg-black border border-zinc-800 rounded-lg text-xs p-2 text-zinc-400" />
-                     <input type="date" value={filters.customEnd} onChange={(e) => setFilters({...filters, customEnd: e.target.value})} className="w-1/2 bg-black border border-zinc-800 rounded-lg text-xs p-2 text-zinc-400" />
+                     <input type="date" value={filters.customStart} onChange={(e) => setFilters({...filters, customStart: e.target.value})} className="w-1/2 bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-lg text-xs p-2 text-zinc-700 dark:text-zinc-400" />
+                     <input type="date" value={filters.customEnd} onChange={(e) => setFilters({...filters, customEnd: e.target.value})} className="w-1/2 bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-lg text-xs p-2 text-zinc-700 dark:text-zinc-400" />
                   </div>
                )}
             </div>
@@ -172,7 +172,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                   <select 
                      value={filters.paymentMode} 
                      onChange={(e) => setFilters({...filters, paymentMode: e.target.value})}
-                     className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
+                     className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
                   >
                      <option value="all">All Modes</option>
                      <option value="online">Online / UPI</option>
@@ -180,12 +180,12 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                   </select>
                </div>
                
-               <label className="flex items-center gap-3 bg-black border border-zinc-800 p-3 rounded-xl cursor-pointer">
-                  <div className={`w-5 h-5 rounded flex items-center justify-center transition-colors ${filters.repeatOnly ? 'bg-yellow-500' : 'bg-zinc-800'}`}>
+               <label className="flex items-center gap-3 bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 p-3 rounded-xl cursor-pointer">
+                  <div className={`w-5 h-5 rounded flex items-center justify-center transition-colors ${filters.repeatOnly ? 'bg-yellow-500' : 'bg-zinc-200 dark:bg-zinc-800'}`}>
                      {filters.repeatOnly && <CheckCircle2 size={12} className="text-black" />}
                   </div>
                   <input type="checkbox" checked={filters.repeatOnly} onChange={(e) => setFilters({...filters, repeatOnly: e.target.checked})} className="hidden" />
-                  <span className="text-xs font-bold text-zinc-300">Repeated Clients Only</span>
+                  <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">Repeated Clients Only</span>
                </label>
             </div>
 
@@ -195,7 +195,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                <select 
                  value={filters.city} 
                  onChange={(e) => setFilters({...filters, city: e.target.value})}
-                 className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
+                 className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
                >
                   <option value="all">All Territories</option>
                   {availableCities.map(city => <option key={city as string} value={city as string}>{city as string}</option>)}
@@ -205,7 +205,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                <select 
                  value={filters.source} 
                  onChange={(e) => setFilters({...filters, source: e.target.value})}
-                 className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
+                 className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
                >
                   <option value="all">Any Source</option>
                   {availableSources.map(src => <option key={src as string} value={src as string}>{String(src).replace('_', ' ')}</option>)}
@@ -218,7 +218,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                <select 
                  value={filters.salesExec} 
                  onChange={(e) => setFilters({...filters, salesExec: e.target.value})}
-                 className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
+                 className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-yellow-500"
                >
                   <option value="all">Any Agent</option>
                   {availableExecs.map(exec => <option key={exec as string} value={exec as string}>{exec as string}</option>)}
@@ -226,7 +226,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                
                <button 
                   onClick={() => setFilters({dateRange: 'all', customStart: '', customEnd: '', paymentMode: 'all', repeatOnly: false, city: 'all', source: 'all', salesExec: 'all'})}
-                  className="w-full flex items-center justify-center gap-2 p-3 mt-4 text-xs font-bold text-zinc-500 hover:text-white transition-colors border border-zinc-800 hover:border-zinc-600 rounded-xl"
+                  className="w-full flex items-center justify-center gap-2 p-3 mt-4 text-xs font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 rounded-xl"
                >
                   <X size={14} /> Clear Adjustments
                </button>
@@ -236,61 +236,61 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
 
       {/* Global CRM Metrics Widget */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><Activity size={18} /><h3 className="text-xs font-black uppercase tracking-widest">Total Deals</h3></div>
-            <p className="text-4xl font-black text-white">{totalDeals}</p>
+            <p className="text-4xl font-black text-zinc-900 dark:text-white">{totalDeals}</p>
          </div>
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><Banknote size={18} /><h3 className="text-xs font-black uppercase tracking-widest">Total Revenue</h3></div>
             <div className="flex items-baseline gap-1">
-               <span className="text-lg font-bold text-emerald-500">₹</span>
-               <p className="text-4xl font-black text-emerald-500">{totalRevenue.toLocaleString('en-IN')}</p>
+               <span className="text-lg font-bold text-emerald-600 dark:text-emerald-500">₹</span>
+               <p className="text-4xl font-black text-emerald-600 dark:text-emerald-500">{totalRevenue.toLocaleString('en-IN')}</p>
             </div>
          </div>
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><Banknote size={18} /><h3 className="text-xs font-black uppercase tracking-widest">Cash Revenue</h3></div>
             <div className="flex items-baseline gap-1">
-               <span className="text-lg font-bold text-white">₹</span>
-               <p className="text-4xl font-black text-white">{cashRevenue.toLocaleString('en-IN')}</p>
+               <span className="text-lg font-bold text-zinc-900 dark:text-white">₹</span>
+               <p className="text-4xl font-black text-zinc-900 dark:text-white">{cashRevenue.toLocaleString('en-IN')}</p>
             </div>
          </div>
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><CreditCard size={18} /><h3 className="text-xs font-black uppercase tracking-widest">Online Revenue</h3></div>
             <div className="flex items-baseline gap-1">
-               <span className="text-lg font-bold text-white">₹</span>
-               <p className="text-4xl font-black text-white">{onlineRevenue.toLocaleString('en-IN')}</p>
+               <span className="text-lg font-bold text-zinc-900 dark:text-white">₹</span>
+               <p className="text-4xl font-black text-zinc-900 dark:text-white">{onlineRevenue.toLocaleString('en-IN')}</p>
             </div>
          </div>
       </div>
 
       <div className="space-y-4">
          {filteredBookings.map((booking: any) => (
-             <div key={booking._id} className="bg-zinc-900/40 border border-zinc-800/50 rounded-[2rem] p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 group hover:bg-zinc-800/20 transition-all duration-300">
+             <div key={booking._id} className="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/50 rounded-[2rem] p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 group hover:bg-zinc-50 dark:hover:bg-zinc-800/20 transition-all duration-300 shadow-sm">
                 
                 <div className="flex items-start gap-6 flex-1 min-w-0">
-                   <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center text-zinc-500 border border-zinc-700 shrink-0">
+                   <div className="w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-500 border border-zinc-200 dark:border-zinc-700 shrink-0 font-bold">
                       {booking.clientName.charAt(0).toUpperCase()}
                    </div>
                    <div className="min-w-0">
                       <div className="flex items-center gap-3">
-                         <h3 className="text-xl font-bold text-white tracking-tight truncate">{booking.clientName}</h3>
-                         <span className="px-2 py-0.5 rounded-md text-[9px] font-black tracking-widest uppercase bg-zinc-800 text-zinc-400 border border-zinc-700">
+                         <h3 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight truncate">{booking.clientName}</h3>
+                         <span className="px-2 py-0.5 rounded-md text-[9px] font-black tracking-widest uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
                             {booking.eventType} 
                          </span>
                          {booking.status === 'completed' && (
-                           <span className="px-2 py-0.5 rounded-md text-[9px] font-black tracking-widest uppercase bg-red-500/10 text-red-500 border border-red-500/20">
+                           <span className="px-2 py-0.5 rounded-md text-[9px] font-black tracking-widest uppercase bg-red-500/10 text-red-600 dark:text-red-500 border border-red-500/20">
                              Completed
                            </span>
                          )}
                       </div>
                       
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 opacity-80">
-                         <span className="flex items-center gap-1.5 text-xs text-zinc-400"><Phone size={12}/> {booking.clientPhone}</span>
-                         {booking.clientEmail && <span className="flex items-center gap-1.5 text-xs text-zinc-400"><Mail size={12}/> {booking.clientEmail}</span>}
+                         <span className="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400"><Phone size={12}/> {booking.clientPhone}</span>
+                         {booking.clientEmail && <span className="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400"><Mail size={12}/> {booking.clientEmail}</span>}
                       </div>
 
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-3">
-                         <p className="flex items-center gap-1.5 text-xs font-bold text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+                         <p className="flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-500/20">
                             <Calendar size={12} /> {new Date(booking.eventDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
                          </p>
                          <p className="flex items-center gap-1.5 text-xs text-zinc-500">
@@ -300,22 +300,22 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                    </div>
                 </div>
 
-                <div className="flex flex-wrap lg:flex-nowrap items-center gap-6 lg:gap-8 shrink-0 w-full lg:w-auto mt-4 lg:mt-0 pt-4 lg:pt-0 border-t border-zinc-800 lg:border-t-0">
+                <div className="flex flex-wrap lg:flex-nowrap items-center gap-6 lg:gap-8 shrink-0 w-full lg:w-auto mt-4 lg:mt-0 pt-4 lg:pt-0 border-t border-zinc-200 dark:border-zinc-800 lg:border-t-0">
                    <div className="text-left lg:text-right flex-1 lg:flex-none">
-                      <span className="text-[10px] uppercase font-black tracking-widest text-zinc-600 block mb-1">Total Value</span>
-                      <span className="text-lg font-bold text-emerald-500">₹{(booking.totalAmount || booking.finalAmount).toLocaleString()}</span>
+                      <span className="text-[10px] uppercase font-black tracking-widest text-zinc-500 block mb-1">Total Value</span>
+                      <span className="text-lg font-bold text-emerald-600 dark:text-emerald-500">₹{(booking.totalAmount || booking.finalAmount).toLocaleString()}</span>
                    </div>
 
                    <div className="flex items-center gap-2">
-                       <span className="px-2 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-emerald-500/10 text-emerald-500 flex items-center gap-1 border border-emerald-500/20">
+                       <span className="px-2 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 flex items-center gap-1 border border-emerald-500/20">
                           <CheckCircle2 size={10} /> Paid
                        </span>
                        {booking.paymentMode === 'cash' ? (
-                          <span className="px-2 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-zinc-800 text-zinc-400 flex items-center gap-1 border border-zinc-700">
+                          <span className="px-2 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 flex items-center gap-1 border border-zinc-200 dark:border-zinc-700">
                              <Banknote size={10} /> Cash
                           </span>
                        ) : (
-                          <span className="px-2 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-zinc-800 text-zinc-400 flex items-center gap-1 border border-zinc-700">
+                          <span className="px-2 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 flex items-center gap-1 border border-zinc-200 dark:border-zinc-700">
                              <CreditCard size={10} /> Online
                           </span>
                        )}
@@ -327,7 +327,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                               href={`/api/bookings/${booking._id}/download`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 text-amber-500 rounded-full transition-all duration-300 shadow-[0_0_20px_-10px_rgba(245,158,11,0.4)]"
+                              className="w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-amber-500/50 text-amber-600 dark:text-amber-500 rounded-full transition-all duration-300"
                               title="Download Invoice Ledger"
                            >
                               <Download size={18} />
@@ -335,7 +335,7 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                         )}
                         <button 
                            onClick={() => setRepeatBookingClient(booking)}
-                           className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-yellow-500/50 text-yellow-500 rounded-full transition-all duration-300"
+                           className="w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-yellow-500/50 text-yellow-600 dark:text-yellow-500 rounded-full transition-all duration-300"
                            title="Quick Repeat Booking"
                         >
                            <Repeat size={18} />
@@ -344,14 +344,14 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
                            <>
                              <button 
                                 onClick={() => setEditingBookingId(booking._id)}
-                                className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-blue-500/50 text-blue-500 rounded-full transition-all duration-300"
+                                className="w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/50 text-blue-600 dark:text-blue-500 rounded-full transition-all duration-300"
                                 title="Edit Record Details"
                              >
                                 <Edit2 size={18} />
                              </button>
                              <button 
                                 onClick={() => handleDelete(booking._id)}
-                                className="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 hover:border-red-900/50 text-zinc-500 hover:text-red-500 rounded-full transition-all duration-300"
+                                className="w-10 h-10 flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-red-400 text-zinc-400 hover:text-red-600 dark:hover:text-red-500 rounded-full transition-all duration-300"
                                 title="Purge Record Permanent"
                              >
                                 <Trash2 size={18} />
@@ -366,11 +366,11 @@ export default function ClientDatabaseView({ clients, userRole }: { clients: any
 
          {filteredBookings.length === 0 && (
             <div className="py-32 text-center">
-               <div className="w-20 h-20 bg-zinc-900 border border-zinc-800 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                  <Database size={24} className="text-zinc-700" />
+               <div className="w-20 h-20 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                  <Database size={24} className="text-zinc-400 dark:text-zinc-700" />
                </div>
-               <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">0 Records Found Matching Criteria</p>
-               <button onClick={() => setFilters({dateRange: 'all', customStart: '', customEnd: '', paymentMode: 'all', repeatOnly: false, city: 'all', source: 'all', salesExec: 'all'})} className="mt-4 px-4 py-2 border border-zinc-700 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-colors">
+               <p className="text-[10px] font-black text-zinc-500 dark:text-zinc-600 uppercase tracking-[0.2em]">0 Records Found Matching Criteria</p>
+               <button onClick={() => setFilters({dateRange: 'all', customStart: '', customEnd: '', paymentMode: 'all', repeatOnly: false, city: 'all', source: 'all', salesExec: 'all'})} className="mt-4 px-4 py-2 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-lg text-xs font-bold transition-colors">
                   Clear Filters
                </button>
             </div>

@@ -170,7 +170,7 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
     <>
       <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-8">
         <div>
-          <h1 className="text-4xl font-black text-white tracking-tighter italic uppercase flex items-center gap-4">
+          <h1 className="text-4xl font-black text-zinc-900 dark:text-white tracking-tighter italic uppercase flex items-center gap-4">
             <MessageSquare size={32} className="text-blue-500" />
             Lead Enquiries
           </h1>
@@ -180,34 +180,34 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
         </div>
         
         <div className="flex flex-wrap items-center gap-4">
-           <div className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-2xl px-5 py-3 group focus-within:border-blue-500/50 transition-all">
-              <Search size={16} className="text-zinc-500 group-focus-within:text-blue-500 transition-colors" />
+           <div className="flex items-center gap-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl px-5 py-3 group focus-within:border-blue-500/50 transition-all shadow-xs">
+              <Search size={16} className="text-zinc-400 dark:text-zinc-500 group-focus-within:text-blue-500 transition-colors" />
               <input 
                  type="text" 
                  value={searchQuery}
                  onChange={e => setSearchQuery(e.target.value)}
                  placeholder="Find User, Email, Phone..." 
-                 className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-white focus:outline-none w-56 placeholder:text-zinc-700" 
+                 className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-zinc-900 dark:text-white focus:outline-none w-56 placeholder:text-zinc-400 dark:placeholder:text-zinc-700" 
               />
            </div>
            
            <button 
              onClick={() => router.push('/admin/enquiries/preview')}
-             className="flex items-center gap-3 px-6 py-3.5 bg-zinc-900 border border-zinc-800 rounded-2xl text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:text-white transition-all"
+             className="flex items-center gap-3 px-6 py-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl text-[10px] font-black uppercase tracking-widest text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-all shadow-xs"
            >
               <Monitor size={16} /> Preview Tool
            </button>
 
            <button 
              onClick={() => setShowFilters(!showFilters)}
-             className={`flex items-center gap-3 px-6 py-3.5 border rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${showFilters ? 'bg-zinc-800 border-zinc-700 text-white' : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white'}`}
+             className={`flex items-center gap-3 px-6 py-3.5 border rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-xs ${showFilters ? 'bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white' : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'}`}
            >
               <Filter size={16} /> Filters
            </button>
 
            <button 
              onClick={() => setIsComposing(true)}
-             className="flex items-center gap-3 px-8 py-3.5 bg-blue-600 border border-blue-500 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)]"
+             className="flex items-center gap-3 px-8 py-3.5 bg-blue-600 border border-blue-500 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-blue-500 transition-all shadow-sm"
            >
               <Mail size={16} />
               Mass Broadcast (${filteredData.length})
@@ -216,13 +216,13 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
       </div>
 
       {showFilters && (
-         <div className="bg-zinc-900 border border-zinc-800 rounded-[2rem] p-6 mb-8 grid grid-cols-1 md:grid-cols-4 gap-6 animate-in slide-in-from-top-4 fade-in duration-300">
+         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[2rem] p-6 mb-8 grid grid-cols-1 md:grid-cols-4 gap-6 animate-in slide-in-from-top-4 fade-in duration-300 shadow-sm">
             <div className="space-y-2">
                <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest block">Event Timeline</label>
                <select 
                  value={filters.dateRange} 
                  onChange={(e) => setFilters({...filters, dateRange: e.target.value})}
-                 className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-blue-500"
+                 className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-blue-500"
                >
                   <option value="all">Lifetime History</option>
                   <option value="month">This Month</option>
@@ -235,7 +235,7 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
                <select 
                  value={filters.type} 
                  onChange={(e) => setFilters({...filters, type: e.target.value})}
-                 className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-blue-500"
+                 className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-blue-500"
                >
                   <option value="all">All Channels</option>
                   {availableTypes.map(type => <option key={type as string} value={type as string}>{type as string}</option>)}
@@ -247,7 +247,7 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
                <select 
                  value={filters.status} 
                  onChange={(e) => setFilters({...filters, status: e.target.value})}
-                 className="w-full bg-black border border-zinc-800 text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-blue-500"
+                 className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-xs font-bold rounded-xl outline-none p-3 focus:border-blue-500"
                >
                   <option value="all">Any Status</option>
                   <option value="new">Fresh Lead</option>
@@ -259,7 +259,7 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
              <div className="space-y-2 flex items-end">
                <button 
                   onClick={() => setFilters({dateRange: 'all', type: 'all', status: 'all'})}
-                  className="w-full flex items-center justify-center gap-2 p-3 text-xs font-bold text-zinc-500 hover:text-white transition-colors border border-zinc-800 hover:border-zinc-600 rounded-xl"
+                  className="w-full flex items-center justify-center gap-2 p-3 text-xs font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 rounded-xl"
                >
                   <X size={14} /> Reset Query
                </button>
@@ -269,21 +269,21 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
 
       {/* Global CRM Metrics Widget */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><Users size={18} /><h3 className="text-xs font-black uppercase tracking-widest">Selected Queries</h3></div>
-            <p className="text-4xl font-black text-white">{totalInquiries}</p>
+            <p className="text-4xl font-black text-zinc-900 dark:text-white">{totalInquiries}</p>
          </div>
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><Globe size={18} /><h3 className="text-xs font-black uppercase tracking-widest">Global Intercepts</h3></div>
-            <p className="text-4xl font-black text-zinc-400">{initialData.length}</p>
+            <p className="text-4xl font-black text-zinc-700 dark:text-zinc-400">{initialData.length}</p>
          </div>
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><Calendar size={18} /><h3 className="text-xs font-black uppercase tracking-widest">This Month</h3></div>
-            <p className="text-4xl font-black text-white">{currentMonthCount}</p>
+            <p className="text-4xl font-black text-zinc-900 dark:text-white">{currentMonthCount}</p>
          </div>
-         <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6">
+         <div className="bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4 text-zinc-500"><Filter size={18} /><h3 className="text-xs font-black uppercase tracking-widest">Fresh Leads (Total)</h3></div>
-            <p className="text-4xl font-black text-blue-500">{initialData.filter(d => d.status === 'new').length}</p>
+            <p className="text-4xl font-black text-blue-600 dark:text-blue-500">{initialData.filter(d => d.status === 'new').length}</p>
          </div>
       </div>
 
@@ -292,63 +292,63 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
              const isEditing = editingId === item._id;
 
              return (
-             <div key={item._id} className={`bg-zinc-900/40 border ${isEditing ? 'border-blue-500/50' : 'border-zinc-800/50'} rounded-[2rem] p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 group hover:bg-zinc-800/20 transition-all duration-300`}>
+             <div key={item._id} className={`bg-white dark:bg-zinc-900/40 border ${isEditing ? 'border-blue-500' : 'border-zinc-200 dark:border-zinc-800/50'} rounded-[2rem] p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 group hover:bg-zinc-50 dark:hover:bg-zinc-800/20 transition-all duration-300 shadow-sm`}>
                 
                 {isEditing ? (
                    <div className="flex-1 w-full space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                          <div className="space-y-1">
                              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Full Name</label>
-                             <input value={editForm.name} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full bg-black border border-zinc-800 rounded-xl p-3 text-sm text-white focus:border-blue-500 outline-none" placeholder="Lead Name" />
+                             <input value={editForm.name} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-sm text-zinc-900 dark:text-white focus:border-blue-500 outline-none" placeholder="Lead Name" />
                          </div>
                          <div className="space-y-1">
                              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Source Tag</label>
-                             <input value={editForm.type} onChange={e => setEditForm({...editForm, type: e.target.value})} className="w-full bg-black border border-zinc-800 rounded-xl p-3 text-sm text-white focus:border-blue-500 outline-none" placeholder="e.g. Contact Page" />
+                             <input value={editForm.type} onChange={e => setEditForm({...editForm, type: e.target.value})} className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-sm text-zinc-900 dark:text-white focus:border-blue-500 outline-none" placeholder="e.g. Contact Page" />
                          </div>
                          <div className="space-y-1">
                              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Email Address</label>
-                             <input value={editForm.email} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full bg-black border border-zinc-800 rounded-xl p-3 text-sm text-zinc-300 focus:border-blue-500 outline-none" placeholder="Target Email" />
+                             <input value={editForm.email} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-sm text-zinc-800 dark:text-zinc-300 focus:border-blue-500 outline-none" placeholder="Target Email" />
                          </div>
                          <div className="space-y-1">
                              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Mobile Phone</label>
-                             <input value={editForm.mobile} onChange={e => setEditForm({...editForm, mobile: e.target.value})} className="w-full bg-black border border-zinc-800 rounded-xl p-3 text-sm text-zinc-300 focus:border-blue-500 outline-none" placeholder="Contact number" />
+                             <input value={editForm.mobile} onChange={e => setEditForm({...editForm, mobile: e.target.value})} className="w-full bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-sm text-zinc-800 dark:text-zinc-300 focus:border-blue-500 outline-none" placeholder="Contact number" />
                          </div>
                       </div>
-                      <div className="flex justify-end gap-3 mt-4 pt-4 border-t border-zinc-800/50">
-                          <button onClick={() => setEditingId(null)} className="px-5 py-2 text-xs font-bold text-zinc-400 hover:text-white transition-colors">Cancel</button>
-                          <button onClick={handleSaveEdit} disabled={isSaving} className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-black uppercase tracking-widest transition-colors shadow-lg shadow-blue-500/20">{isSaving ? 'Saving...' : <><Save size={14}/> Apply Fixes</>}</button>
+                      <div className="flex justify-end gap-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/50">
+                          <button onClick={() => setEditingId(null)} className="px-5 py-2 text-xs font-bold text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Cancel</button>
+                          <button onClick={handleSaveEdit} disabled={isSaving} className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-black uppercase tracking-widest transition-colors shadow-sm">{isSaving ? 'Saving...' : <><Save size={14}/> Apply Fixes</>}</button>
                       </div>
                    </div>
                 ) : (
                 <>
                 <div className="flex items-start gap-6 flex-1 min-w-0 w-full">
-                   <div className="w-12 h-12 bg-zinc-800 rounded-full flex flex-col items-center justify-center text-zinc-500 border border-zinc-700 shrink-0 uppercase font-black tracking-tighter text-sm">
+                   <div className="w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full flex flex-col items-center justify-center text-zinc-600 dark:text-zinc-500 border border-zinc-200 dark:border-zinc-700 shrink-0 uppercase font-black tracking-tighter text-sm">
                       {item.name?.charAt(0) || '?'}
                    </div>
                    <div className="min-w-0 flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 justify-between w-full">
                          <div className="flex items-center gap-3 min-w-0">
-                            <h3 className="text-xl font-bold text-white tracking-tight truncate">{item.name || 'Anonymous User'}</h3>
+                            <h3 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight truncate">{item.name || 'Anonymous User'}</h3>
                             <span className="text-[11px] font-medium text-zinc-500 italic lowercase">
                                from {item.type} 
                             </span>
                          </div>
                          <div className="flex items-center gap-4 shrink-0">
                              <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button onClick={() => setBookingData(item)} className="p-1.5 bg-blue-500/10 text-blue-500 hover:bg-blue-500 hover:text-white rounded-md transition-colors" title="Convert to CRM Booking">
+                                <button onClick={() => setBookingData(item)} className="p-1.5 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-500 hover:bg-blue-500 hover:text-white rounded-md transition-colors" title="Convert to CRM Booking">
                                    <Contact size={14} />
                                 </button>
-                                <button onClick={() => startEditing(item)} className="p-1.5 text-zinc-500 hover:bg-zinc-800 hover:text-white rounded-md transition-colors" title="Edit Inquiry Info">
+                                <button onClick={() => startEditing(item)} className="p-1.5 text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white rounded-md transition-colors" title="Edit Inquiry Info">
                                    <Edit2 size={14} />
                                 </button>
                                 {userRole === 'admin' && (
-                                  <button onClick={() => handleDeleteInquiry(item)} className="p-1.5 text-red-500 hover:bg-red-500/10 rounded-md transition-colors" title="Trash Entry">
+                                  <button onClick={() => handleDeleteInquiry(item)} className="p-1.5 text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-md transition-colors" title="Trash Entry">
                                      <Trash2 size={14} />
                                   </button>
                                 )}
                              </div>
                              <div className="flex items-center gap-2">
-                                 <Clock size={12} className="text-zinc-600" />
+                                 <Clock size={12} className="text-zinc-400 dark:text-zinc-600" />
                                  <span className="text-[10px] uppercase font-bold tracking-widest text-zinc-500">
                                      Intercepted {new Date(item.createdAt).toLocaleDateString('en-GB')}
                                  </span>
@@ -357,26 +357,26 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
                       </div>
                       
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 opacity-80">
-                         {item.mobile && <span className="flex items-center gap-1.5 text-xs font-medium text-blue-400"><MessageSquare size={12}/> {item.mobile}</span>}
-                         {item.email && <span className="flex items-center gap-1.5 text-xs font-medium text-zinc-400"><Mail size={12}/> {item.email}</span>}
+                         {item.mobile && <span className="flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400"><MessageSquare size={12}/> {item.mobile}</span>}
+                         {item.email && <span className="flex items-center gap-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400"><Mail size={12}/> {item.email}</span>}
                       </div>
 
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-3 mb-2">
                          {item.date && (
-                             <p className="flex items-center gap-1.5 text-xs font-bold text-yellow-500 uppercase tracking-widest bg-yellow-500/10 px-2 py-0.5 rounded border border-yellow-500/20">
+                             <p className="flex items-center gap-1.5 text-xs font-bold text-yellow-600 dark:text-yellow-500 uppercase tracking-widest bg-yellow-50 dark:bg-yellow-500/10 px-2 py-0.5 rounded border border-yellow-200 dark:border-yellow-500/20">
                                 <Calendar size={12} /> {item.date}
                              </p>
                          )}
                          {item.destination && (
-                             <p className="flex items-center gap-1.5 text-xs font-bold text-emerald-500 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                             <p className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-500 uppercase tracking-widest bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-500/20">
                                 <MapPin size={12}/> {item.destination}
                              </p>
                          )}
                       </div>
 
                       {item.message && (
-                          <div className="mt-3 p-3 bg-black/50 border border-zinc-800 rounded-xl">
-                              <p className="text-xs text-zinc-400 italic font-medium leading-relaxed">"{item.message}"</p>
+                          <div className="mt-3 p-3 bg-zinc-50 dark:bg-black/50 border border-zinc-200 dark:border-zinc-800 rounded-xl">
+                              <p className="text-xs text-zinc-600 dark:text-zinc-400 italic font-medium leading-relaxed">"{item.message}"</p>
                           </div>
                       )}
                    </div>
@@ -390,11 +390,11 @@ export default function EnquiriesView({ initialData, userRole }: { initialData: 
 
          {filteredData.length === 0 && (
             <div className="py-32 text-center">
-               <div className="w-20 h-20 bg-zinc-900 border border-zinc-800 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                  <MessageSquare size={24} className="text-zinc-700" />
+               <div className="w-20 h-20 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                  <MessageSquare size={24} className="text-zinc-400 dark:text-zinc-700" />
                </div>
-               <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">0 Inquiries Found in Log Filter</p>
-               <button onClick={() => setFilters({dateRange: 'all', type: 'all', status: 'all'})} className="mt-4 px-4 py-2 border border-zinc-700 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-colors">
+               <p className="text-[10px] font-black text-zinc-500 dark:text-zinc-600 uppercase tracking-[0.2em]">0 Inquiries Found in Log Filter</p>
+               <button onClick={() => setFilters({dateRange: 'all', type: 'all', status: 'all'})} className="mt-4 px-4 py-2 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-lg text-xs font-bold transition-colors">
                   Reset Views
                </button>
             </div>

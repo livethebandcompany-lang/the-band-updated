@@ -26,11 +26,11 @@ export default function AdminHeader({ user }: { user: any }) {
             <p className="text-xs text-zinc-500 mt-0.5 capitalize">{user.role}</p>
           </div>
           <div className="relative">
-            <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden flex items-center justify-center border border-zinc-300 dark:border-zinc-700">
+            <div className="w-9 h-9 rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden flex items-center justify-center border border-zinc-300 dark:border-zinc-700 shadow-sm">
               {user.image ? (
                 <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
               ) : (
-                <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+                <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
                   {user.name?.charAt(0)}
                 </span>
               )}
